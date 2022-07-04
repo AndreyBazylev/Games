@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BA8C1C99-4AC5-A5D5-F1FE-D89C1F04231D}</ProjectGuid>
+    <ProjectGuid>{2C8D6DA2-2945-FB65-CF9A-23EA206738D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,9 +59,9 @@
     <Compile Include="Assets\Scripts\Details\Enemy.cs" />
     <Compile Include="Assets\Scripts\Details\HouseAlert.cs" />
     <Compile Include="Assets\Scripts\Details\InHouse.cs" />
-    <Compile Include="Assets\Scripts\Player\Move.cs" />
-    <Compile Include="Assets\Scripts\Scenes\GoHouse.cs" />
-    <Compile Include="Assets\Scripts\Scenes\GoStreet.cs" />
+    <Compile Include="Assets\Scripts\Player\WalkingObject.cs" />
+    <Compile Include="Assets\Scripts\Scenes\HouseSceneApplication.cs" />
+    <Compile Include="Assets\Scripts\Scenes\StreetSceneApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

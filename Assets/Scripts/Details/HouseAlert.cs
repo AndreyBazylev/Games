@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class HouseAlert : MonoBehaviour
 {
-    [SerializeField] AudioClip _alertSound;
-    [SerializeField] float _alertSpeed;
+    [SerializeField] private AudioClip _alertSound;
+    [SerializeField] private float _alertSpeed;
 
     private AudioSource _audioSource;
 
@@ -17,6 +17,11 @@ public class HouseAlert : MonoBehaviour
 
     private bool _soundVolumeIsIncrease = true;
 
+    public void StartAlert()
+    {
+        StartCoroutine(ChangeAlertVolume());
+    }
+
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -25,7 +30,7 @@ public class HouseAlert : MonoBehaviour
         _audioStrenght = _minStrenght;
     }
 
-    public void StartAlert()
+    private IEnumerator ChangeAlertVolume()
     {        
         _audioSource.volume = _audioStrenght;
 
@@ -48,5 +53,7 @@ public class HouseAlert : MonoBehaviour
         {
             _soundVolumeIsIncrease = false;
         }
+
+        yield return new WaitForSeconds(0.1f);
     }
 }

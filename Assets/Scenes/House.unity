@@ -226,6 +226,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3080256705325960200, guid: 4867d19d886b7ea45ae668584db987cd,
         type: 3}
+      propertyPath: _speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080256705325960200, guid: 4867d19d886b7ea45ae668584db987cd,
+        type: 3}
+      propertyPath: _jumpStrenght
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080256705325960200, guid: 4867d19d886b7ea45ae668584db987cd,
+        type: 3}
       propertyPath: _playerAnomator
       value: 
       objectReference: {fileID: 9255935}
@@ -1356,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotSound: {fileID: 8300000, guid: ef3c6743e45fb554799d80b8e752406b, type: 3}
+  _playerDeadSound: {fileID: 8300000, guid: 500110d296b8b0c459793c2ecdcc9fd7, type: 3}
 --- !u!82 &1233207900
 AudioSource:
   m_ObjectHideFlags: 0
