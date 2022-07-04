@@ -8,26 +8,52 @@ public class HouseAlert : MonoBehaviour
 {
     [SerializeField] private AudioClip _alertSound;
     [SerializeField] private float _alertSpeed;
-
+    [SerializeField] private float _maxStrenght;
+    [SerializeField] private float _minStrenght;
+    
     private AudioSource _audioSource;
 
-    private float _maxStrenght;
-    private float _minStrenght;
     private float _audioStrenght;
-
+    private float _coruntineDelay;
+    
+    private bool _isPlayerInHouse = false;
     private bool _soundVolumeIsIncrease = true;
 
-    public void StartAlert()
-    {
-        StartCoroutine(ChangeAlertVolume());
-    }
-
+    
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         _minStrenght = 0.3f;
         _maxStrenght = 0.8f;
+        _coruntineDelay = 0.1f;
         _audioStrenght = _minStrenght;
+    }
+
+    public void StartAlert()
+    {
+        if (_isPlayerInHouse)
+        {
+            StartCoroutine(ChangeAlertVolume());
+            _audioSource.Play();
+        }  
+    }
+
+    public void CheckIsPlayerInHouse()
+    {
+        _isPlayerInHouse = !_isPlayerInHouse;
+    }
+
+    public void TurnOffAlert()
+    {
+        if (_isPlayerInHouse == false)
+        {
+            StopAllCoroutines();
+
+            while (_audioStrenght > 0)
+            {
+                _audioStrenght = Mathf.MoveTowards(_audioStrenght, 0, _alertSpeed * Time.deltaTime);
+            }
+        }
     }
 
     private IEnumerator ChangeAlertVolume()
@@ -43,7 +69,14 @@ public class HouseAlert : MonoBehaviour
         {
             _audioStrenght = Mathf.MoveTowards(_audioStrenght, _minStrenght, _alertSpeed * Time.deltaTime);
         }
-        
+
+        StartCoroutine(ChangeAlertVolumeDerection());
+
+        yield return new WaitForSeconds(_coruntineDelay);
+    }
+
+    private IEnumerator ChangeAlertVolumeDerection()
+    {
         if (_audioStrenght <= _minStrenght)
         {
             _soundVolumeIsIncrease = true;
@@ -54,6 +87,6 @@ public class HouseAlert : MonoBehaviour
             _soundVolumeIsIncrease = false;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(_coruntineDelay);
     }
 }

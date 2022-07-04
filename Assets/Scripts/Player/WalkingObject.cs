@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+
 public class WalkingObject : MonoBehaviour
 {
     [SerializeField] float _speed;
@@ -16,8 +19,8 @@ public class WalkingObject : MonoBehaviour
 
     void Start()
     {
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()

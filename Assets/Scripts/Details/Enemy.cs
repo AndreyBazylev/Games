@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(AudioSource))]
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private AudioClip _shotSound;
@@ -10,8 +13,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     { 
-        TryGetComponent(out AudioSource result);
-        _audioSource = result;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

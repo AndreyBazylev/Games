@@ -9,6 +9,9 @@ public class InHouse : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        _isPlayerInHouse?.Invoke();
+        if (collision.GetComponent<WalkingObject>())
+        {
+            _isPlayerInHouse?.Invoke();
+        }
     }
 }
