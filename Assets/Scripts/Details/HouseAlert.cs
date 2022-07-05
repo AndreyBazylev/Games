@@ -8,23 +8,23 @@ public class HouseAlert : MonoBehaviour
 {
     [SerializeField] private AudioClip _alertSound;
     [SerializeField] private float _alertSpeed;
-    [SerializeField] private float _maxStrenght;
-    [SerializeField] private float _minStrenght;
+    [SerializeField] private float _maxStrenght = 0.3f;
+    [SerializeField] private float _minStrenght = 0.8f;
+
+    private const string ChangeAlertVolumeDerectionCoruntine = "ChangeAlertVolumeDerection";
     
     private AudioSource _audioSource;
 
     private float _audioStrenght;
     private float _coruntineDelay;
-    
+
     private bool _isPlayerInHouse = false;
-    private bool _soundVolumeIsIncrease = true;
+    private bool _soundVolumeIsIncreasing = true;
 
     
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _minStrenght = 0.3f;
-        _maxStrenght = 0.8f;
         _coruntineDelay = 0.1f;
         _audioStrenght = _minStrenght;
     }
@@ -60,7 +60,7 @@ public class HouseAlert : MonoBehaviour
     {        
         _audioSource.volume = _audioStrenght;
 
-        if (_soundVolumeIsIncrease)
+        if (_soundVolumeIsIncreasing)
         {
             _audioStrenght = Mathf.MoveTowards(_audioStrenght, _maxStrenght, _alertSpeed * Time.deltaTime);
         }
@@ -70,6 +70,7 @@ public class HouseAlert : MonoBehaviour
             _audioStrenght = Mathf.MoveTowards(_audioStrenght, _minStrenght, _alertSpeed * Time.deltaTime);
         }
 
+        StopCoroutine(ChangeAlertVolumeDerectionCoruntine);
         StartCoroutine(ChangeAlertVolumeDerection());
 
         yield return null;
@@ -79,12 +80,12 @@ public class HouseAlert : MonoBehaviour
     {
         if (_audioStrenght <= _minStrenght)
         {
-            _soundVolumeIsIncrease = true;
+            _soundVolumeIsIncreasing = true;
         }
 
         else if (_audioStrenght >= _maxStrenght)
         {
-            _soundVolumeIsIncrease = false;
+            _soundVolumeIsIncreasing = false;
         }
 
         yield return new WaitForSeconds(_coruntineDelay);
