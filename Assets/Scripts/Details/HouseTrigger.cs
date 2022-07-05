@@ -14,7 +14,7 @@ public class HouseTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("<_<");
+        Debug.Log("*_*");
 
         if (collision.TryGetComponent(out WalkingObject result))
         {

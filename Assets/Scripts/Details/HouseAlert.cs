@@ -25,12 +25,14 @@ public class HouseAlert : MonoBehaviour
         _audioStrenght = _minStrenght;
     }
 
-    private void Update()
+    public void SpecifyPlayerLocation()
     {
+        _isPlayerinHouse = !_isPlayerinHouse;
+
         if (_isPlayerinHouse)
         {
-            _audioSource.Play(); 
-            
+            _audioSource.Play();
+
             if (_audioStrenght < 8)
             {
                 StartCoroutine(ChangeAlertVolume(_maxStrenght));
@@ -46,11 +48,6 @@ public class HouseAlert : MonoBehaviour
         {
             StartCoroutine(ChangeAlertVolume(0));
         }
-    }
-
-    public void SpecifyPlayerLocation()
-    {
-        _isPlayerinHouse = !_isPlayerinHouse; 
     }
 
     private IEnumerator ChangeAlertVolume(float target)
