@@ -7,13 +7,27 @@ public class InterInHouse : MonoBehaviour
 {
     [SerializeField] private GameObject _camera;
     [SerializeField] private GameObject _cameraHousePoint;
-    [SerializeField] UnityEvent _isPlayerInHouse;
+    [SerializeField] private GameObject _cameraStreetPoint;
+    [SerializeField] private UnityEvent _isPlayerInHouse;
+
+    private bool _isPlayerInStreet = true;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<WalkingObject>() && Input.GetKey(KeyCode.F))
+        Debug.Log("UwU");
+
+        if (collision.TryGetComponent(out WalkingObject result) && Input.GetKey(KeyCode.F))
         {
-            _camera.transform.position = _cameraHousePoint.transform.position;
+            if (_isPlayerInStreet)
+            {
+                _camera.transform.position = _cameraHousePoint.transform.position;
+            }
+            else
+            {
+                _camera.transform.position = _cameraStreetPoint.transform.position;
+            }
+
+            _isPlayerInStreet = !_isPlayerInStreet;
             _isPlayerInHouse?.Invoke();
         }
     }

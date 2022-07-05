@@ -1021,6 +1021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420028}
   _cameraHousePoint: {fileID: 583679897}
+  _cameraStreetPoint: {fileID: 282771434}
   _isPlayerInHouse:
     m_PersistentCalls:
       m_Calls:
@@ -1048,7 +1049,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03766918, y: -0.10802984}
+  m_Offset: {x: 4.933796, y: -0.10802984}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1059,7 +1060,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6403751, y: 1.2160597}
+  m_Size: {x: 11.432627, y: 1.2160597}
   m_EdgeRadius: 0
 --- !u!4 &175037157
 Transform:
@@ -4347,12 +4348,12 @@ PrefabInstance:
     - target: {fileID: 2861485162510925471, guid: 4867d19d886b7ea45ae668584db987cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.39
+      value: 23.48
       objectReference: {fileID: 0}
     - target: {fileID: 2861485162510925471, guid: 4867d19d886b7ea45ae668584db987cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.77
+      value: -2.59
       objectReference: {fileID: 0}
     - target: {fileID: 2861485162510925471, guid: 4867d19d886b7ea45ae668584db987cd,
         type: 3}
@@ -8351,7 +8352,6 @@ GameObject:
   - component: {fileID: 1450141811}
   - component: {fileID: 1450141810}
   - component: {fileID: 1450141809}
-  - component: {fileID: 1450141808}
   m_Layer: 0
   m_Name: Alert
   m_TagString: Untagged
@@ -8359,23 +8359,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1450141808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450141807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9047c168552204db5b93e2ec0f168f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 519420028}
-  _cameraHousePoint: {fileID: 282771434}
-  _isPlayerInStreet:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1450141809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8464,7 +8447,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2.9735527
+  MinDistance: 500
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

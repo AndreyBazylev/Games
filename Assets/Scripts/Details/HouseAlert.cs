@@ -38,7 +38,7 @@ public class HouseAlert : MonoBehaviour
         }  
     }
 
-    public void CheckIsPlayerInHouse()
+    public void SpecifyPlayerLocation()
     {
         _isPlayerInHouse = !_isPlayerInHouse;
     }
@@ -72,7 +72,7 @@ public class HouseAlert : MonoBehaviour
 
         StartCoroutine(ChangeAlertVolumeDerection());
 
-        yield return new WaitForSeconds(_coruntineDelay);
+        yield return null;
     }
 
     private IEnumerator ChangeAlertVolumeDerection()
