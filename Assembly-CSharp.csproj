@@ -59,7 +59,6 @@
     <Compile Include="Assets\Scripts\Details\Enemy.cs" />
     <Compile Include="Assets\Scripts\Details\HouseAlert.cs" />
     <Compile Include="Assets\Scripts\Details\HouseTrigger.cs" />
-    <Compile Include="Assets\Scripts\Details\InHouse.cs" />
     <Compile Include="Assets\Scripts\Player\WalkingObject.cs" />
   </ItemGroup>
   <ItemGroup>

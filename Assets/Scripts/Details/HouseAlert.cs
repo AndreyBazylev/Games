@@ -10,19 +10,16 @@ public class HouseAlert : MonoBehaviour
     [SerializeField] private float _alertSpeed;
     [SerializeField] private float _maxStrenght = 0.3f;
     [SerializeField] private float _minStrenght = 0.8f;
-
-    private const string ChangeAlertVolumeDerectionCoruntine = "ChangeAlertVolumeDerection";
     
     private AudioSource _audioSource;
-
-    private float _audioStrenght;
+    private Coroutine _alertVolumeCoruntine;
 
     private bool _isPlayerinHouse = false;
     
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioStrenght = _minStrenght;
+        _audioSource.volume = _minStrenght;
     }
 
     public void SpecifyPlayerLocation()
@@ -33,28 +30,37 @@ public class HouseAlert : MonoBehaviour
         {
             _audioSource.Play();
 
-            if (_audioStrenght < 8)
+            if (_audioSource.volume < _maxStrenght)
             {
-                StartCoroutine(ChangeAlertVolume(_maxStrenght));
-            }
+                if (_alertVolumeCoruntine == null)
+                {
+                    _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(_maxStrenght));
+                }
 
-            else
-            {
-                StartCoroutine(ChangeAlertVolume(_minStrenght));
+                else
+                {
+                    StopCoroutine(nameof(_alertVolumeCoruntine));
+                    _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(_maxStrenght));
+                }
+
+                StartCoroutine(ChangeAlertVolume(_maxStrenght));
             }
         }
 
         else
         {
-            StartCoroutine(ChangeAlertVolume(0));
+            StartCoroutine(ChangeAlertVolume(_minStrenght));
         }
     }
 
     private IEnumerator ChangeAlertVolume(float target)
-    {        
-        _audioSource.volume = _audioStrenght;
+    {
+        Debug.Log("uwu");
 
-        _audioStrenght = Mathf.MoveTowards(_audioStrenght, target, _alertSpeed * Time.deltaTime);
+        while (_audioSource.volume != target)
+        {
+            _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, target, _alertSpeed * Time.deltaTime);
+        }
 
         yield return null;
     }
