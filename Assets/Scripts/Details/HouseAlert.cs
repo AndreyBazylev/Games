@@ -16,78 +16,49 @@ public class HouseAlert : MonoBehaviour
     private AudioSource _audioSource;
 
     private float _audioStrenght;
-    private float _coruntineDelay;
 
-    private bool _isPlayerInHouse = false;
-    private bool _soundVolumeIsIncreasing = true;
-
+    private bool _isPlayerinHouse = false;
     
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _coruntineDelay = 0.1f;
         _audioStrenght = _minStrenght;
     }
 
-    public void StartAlert()
+    private void Update()
     {
-        if (_isPlayerInHouse)
+        if (_isPlayerinHouse)
         {
-            StartCoroutine(ChangeAlertVolume());
-            _audioSource.Play();
-        }  
-    }
-
-    public void SpecifyPlayerLocation()
-    {
-        _isPlayerInHouse = !_isPlayerInHouse;
-    }
-
-    public void TurnOffAlert()
-    {
-        if (_isPlayerInHouse == false)
-        {
-            StopAllCoroutines();
-
-            while (_audioStrenght > 0)
+            _audioSource.Play(); 
+            
+            if (_audioStrenght < 8)
             {
-                _audioStrenght = Mathf.MoveTowards(_audioStrenght, 0, _alertSpeed * Time.deltaTime);
+                StartCoroutine(ChangeAlertVolume(_maxStrenght));
             }
-        }
-    }
 
-    private IEnumerator ChangeAlertVolume()
-    {        
-        _audioSource.volume = _audioStrenght;
-
-        if (_soundVolumeIsIncreasing)
-        {
-            _audioStrenght = Mathf.MoveTowards(_audioStrenght, _maxStrenght, _alertSpeed * Time.deltaTime);
+            else
+            {
+                StartCoroutine(ChangeAlertVolume(_minStrenght));
+            }
         }
 
         else
         {
-            _audioStrenght = Mathf.MoveTowards(_audioStrenght, _minStrenght, _alertSpeed * Time.deltaTime);
+            StartCoroutine(ChangeAlertVolume(0));
         }
-
-        StopCoroutine(ChangeAlertVolumeDerectionCoruntine);
-        StartCoroutine(ChangeAlertVolumeDerection());
-
-        yield return null;
     }
 
-    private IEnumerator ChangeAlertVolumeDerection()
+    public void SpecifyPlayerLocation()
     {
-        if (_audioStrenght <= _minStrenght)
-        {
-            _soundVolumeIsIncreasing = true;
-        }
+        _isPlayerinHouse = !_isPlayerinHouse; 
+    }
 
-        else if (_audioStrenght >= _maxStrenght)
-        {
-            _soundVolumeIsIncreasing = false;
-        }
+    private IEnumerator ChangeAlertVolume(float target)
+    {        
+        _audioSource.volume = _audioStrenght;
 
-        yield return new WaitForSeconds(_coruntineDelay);
+        _audioStrenght = Mathf.MoveTowards(_audioStrenght, target, _alertSpeed * Time.deltaTime);
+
+        yield return null;
     }
 }

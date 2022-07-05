@@ -12,11 +12,11 @@ public class HouseTrigger : MonoBehaviour
 
     private bool _isPlayerInStreet = true;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("VwV");
+        Debug.Log("<_<");
 
-        if (collision.TryGetComponent(out WalkingObject result) && Input.GetKey(KeyCode.F))
+        if (collision.TryGetComponent(out WalkingObject result))
         {
             if (_isPlayerInStreet)
             {
