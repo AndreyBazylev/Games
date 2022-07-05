@@ -26,7 +26,7 @@ public class HouseAlert : MonoBehaviour
     {
         _isPlayerinHouse = !_isPlayerinHouse;
 
-        if (_isPlayerinHouse)
+        if (ChangeDirection())
         {
             _audioSource.Play();
 
@@ -39,7 +39,7 @@ public class HouseAlert : MonoBehaviour
 
                 else
                 {
-                    StopCoroutine(nameof(_alertVolumeCoruntine));
+                    StopCoroutine(_alertVolumeCoruntine);
                     _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(_maxStrenght));
                 }
 
@@ -50,6 +50,19 @@ public class HouseAlert : MonoBehaviour
         else
         {
             StartCoroutine(ChangeAlertVolume(_minStrenght));
+        }
+    }
+
+    public bool ChangeDirection()
+    {
+        if (_isPlayerinHouse)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
         }
     }
 
