@@ -22,11 +22,11 @@ public class HouseAlert : MonoBehaviour
         _audioSource.volume = _minStrenght;
     }
 
-    public void SpecifyPlayerLocation()
+    public void ChangeVolumeDirection()
     {
         _isPlayerinHouse = !_isPlayerinHouse;
 
-        if (ChangeDirection())
+        if (CheckPlayerLocation())
         {
             _audioSource.Play();
 
@@ -53,7 +53,7 @@ public class HouseAlert : MonoBehaviour
         }
     }
 
-    public bool ChangeDirection()
+    public bool CheckPlayerLocation()
     {
         if (_isPlayerinHouse)
         {

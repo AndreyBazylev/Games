@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class WalkingObject : MonoBehaviour
 {
-    [SerializeField] float _speed;
-    [SerializeField] float _jumpStrenght;
-    [SerializeField] Animator _playerAnoimator;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _jumpStrenght;
+    [SerializeField] private Animator _playerAnoimator;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
