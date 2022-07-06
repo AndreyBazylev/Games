@@ -8,8 +8,8 @@ public class HouseAlert : MonoBehaviour
 {
     [SerializeField] private AudioClip _alertSound;
     [SerializeField] private float _alertSpeed;
-    [SerializeField] private float _maxStrenght = 0.3f;
-    [SerializeField] private float _minStrenght = 0.8f;
+    [SerializeField] private float _maxStrenght = 0.8f;
+    [SerializeField] private float _minStrenght = 0.3f;
     
     private AudioSource _audioSource;
     private Coroutine _alertVolumeCoruntine;
@@ -26,7 +26,7 @@ public class HouseAlert : MonoBehaviour
     {
         _isPlayerinHouse = !_isPlayerinHouse;
 
-        if (CheckPlayerLocation())
+        if (_isPlayerinHouse)
         {
             _audioSource.Play();
 
@@ -42,27 +42,21 @@ public class HouseAlert : MonoBehaviour
                     StopCoroutine(_alertVolumeCoruntine);
                     _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(_maxStrenght));
                 }
-
-                StartCoroutine(ChangeAlertVolume(_maxStrenght));
             }
         }
 
         else
         {
-            StartCoroutine(ChangeAlertVolume(_minStrenght));
-        }
-    }
+            if (_alertVolumeCoruntine == null)
+            {
+                _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(0));
+            }
 
-    public bool CheckPlayerLocation()
-    {
-        if (_isPlayerinHouse)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
+            else
+            {
+                StopCoroutine(_alertVolumeCoruntine);
+                _alertVolumeCoruntine = StartCoroutine(ChangeAlertVolume(0));
+            }
         }
     }
 
@@ -73,8 +67,7 @@ public class HouseAlert : MonoBehaviour
         while (_audioSource.volume != target)
         {
             _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, target, _alertSpeed * Time.deltaTime);
+            yield return null;
         }
-
-        yield return null;
     }
 }

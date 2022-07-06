@@ -1026,7 +1026,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450141809}
-        m_MethodName: SpecifyPlayerLocation
+        m_MethodName: ChangeVolumeDirection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8372,8 +8372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alertSound: {fileID: 8300000, guid: 239f6f4e619866f4890bf6173a5cd6d6, type: 3}
   _alertSpeed: 0.1
-  _maxStrenght: 0.3
-  _minStrenght: 0.8
+  _maxStrenght: 0.8
+  _minStrenght: 0.3
 --- !u!61 &1450141811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8412,7 +8412,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 239f6f4e619866f4890bf6173a5cd6d6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.419
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
