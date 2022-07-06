@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemySpawnersController : MonoBehaviour
 {
-    [SerializeField] GameObject[] _spawnersArray;
+    [SerializeField] private GameObject[] _spawnersArray;
     
-    [SerializeField] bool _isEnemySpawningForbidden;
-    [SerializeField] GameObject _enemyPrefab;
+    [SerializeField] private bool _isEnemySpawningForbidden;
+    [SerializeField] private GameObject _anyEnemyPrefab;
+
+    private readonly WaitForSeconds _wait = new WaitForSeconds(2);
 
     private void Start()
     {
@@ -22,13 +24,13 @@ public class EnemySpawnersController : MonoBehaviour
             {
                 Debug.Log("UwU");
                 SpawnEnemy(_spawnersArray[index]);
-                yield return new WaitForSeconds(2);
+                yield return _wait;
             }
         }
     }
 
     private void SpawnEnemy(GameObject spawnPosition)
     {
-        Instantiate(_enemyPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation);
+        Instantiate(_anyEnemyPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation);
     }
 }

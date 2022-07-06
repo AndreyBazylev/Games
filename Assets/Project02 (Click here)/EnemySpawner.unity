@@ -4088,7 +4088,7 @@ PrefabInstance:
     - target: {fileID: 9150871741444717570, guid: 33788b0345c2dcf4288205b1b737cb13,
         type: 3}
       propertyPath: _spawnersArray.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9150871741444717570, guid: 33788b0345c2dcf4288205b1b737cb13,
         type: 3}

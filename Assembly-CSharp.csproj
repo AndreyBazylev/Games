@@ -60,9 +60,8 @@
     <Compile Include="Assets\Project01\Scripts\Details\HouseAlert.cs" />
     <Compile Include="Assets\Project01\Scripts\Details\HouseTrigger.cs" />
     <Compile Include="Assets\Project01\Scripts\Player\WalkingObject.cs" />
-    <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemyMoving.cs" />
+    <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemyMoveScript.cs" />
     <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemySpawner.cs" />
-    <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemySpawnersController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
