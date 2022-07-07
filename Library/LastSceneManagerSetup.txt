@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Project02 (Click here)/EnemySpawner.unity
+- path: Assets/Project03 (Click here)/SimplePlatformer.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

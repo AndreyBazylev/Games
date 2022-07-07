@@ -59,9 +59,12 @@
     <Compile Include="Assets\Project01\Scripts\Details\Enemy.cs" />
     <Compile Include="Assets\Project01\Scripts\Details\HouseAlert.cs" />
     <Compile Include="Assets\Project01\Scripts\Details\HouseTrigger.cs" />
-    <Compile Include="Assets\Project01\Scripts\Player\WalkingObject.cs" />
-    <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemyMover.cs" />
-    <Compile Include="Assets\Project02 (Click here)\Scripts\Enemys\EnemySpawnersController.cs" />
+    <Compile Include="Assets\Project02\Enemys\EnemyMover.cs" />
+    <Compile Include="Assets\Project02\Enemys\EnemySpawnersController.cs" />
+    <Compile Include="Assets\Project03 (Click here)\Scripts\Enemys\PatrolEnemy.cs" />
+    <Compile Include="Assets\Project03 (Click here)\Scripts\Money\Money.cs" />
+    <Compile Include="Assets\Project03 (Click here)\Scripts\Money\Wallet.cs" />
+    <Compile Include="Assets\Project03 (Click here)\Scripts\Player\WalkingObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
