@@ -6,8 +6,8 @@ public class EnemySpawnersController : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnersArray;
     
-    [SerializeField] private bool _isEnemySpawningForbidden;
-    [SerializeField] private GameObject _anyEnemyPrefab;
+    [SerializeField] private bool _isSpawnEnable;
+    [SerializeField] private GameObject _enemyPrefab;
 
     private readonly WaitForSeconds _wait = new WaitForSeconds(2);
 
@@ -18,7 +18,7 @@ public class EnemySpawnersController : MonoBehaviour
 
     private IEnumerator ControlingEnemySpawning()
     {
-        while (_isEnemySpawningForbidden)
+        while (_isSpawnEnable)
         {
             for (int index = 0; index < _spawnersArray.Length; index++)
             {
@@ -31,6 +31,6 @@ public class EnemySpawnersController : MonoBehaviour
 
     private void SpawnEnemy(Transform spawnPosition)
     {
-        Instantiate(_anyEnemyPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation);
+        Instantiate(_enemyPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation);
     }
 }
