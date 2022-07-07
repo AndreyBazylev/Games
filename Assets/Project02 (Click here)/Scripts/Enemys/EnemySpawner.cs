@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnersController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _spawnersArray;
+    [SerializeField] private Transform[] _spawnersArray;
     
     [SerializeField] private bool _isEnemySpawningForbidden;
     [SerializeField] private GameObject _anyEnemyPrefab;
@@ -29,7 +29,7 @@ public class EnemySpawnersController : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(GameObject spawnPosition)
+    private void SpawnEnemy(Transform spawnPosition)
     {
         Instantiate(_anyEnemyPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation);
     }
