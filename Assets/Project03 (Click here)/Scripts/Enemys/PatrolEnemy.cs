@@ -6,20 +6,16 @@ using UnityEngine;
 
 public class PatrolEnemy : MonoBehaviour
 {
-    [SerializeField] float _speed;
-    [SerializeField] bool _isEnemyPatroling;
-    [SerializeField] Transform _firstPoint;
-    [SerializeField] Transform _secondPoint;
+    [SerializeField] private Transform[] _points;
+    [SerializeField] private float _speed;
+    [SerializeField] private bool _isEnemyPatroling;
 
     private SpriteRenderer _sriteRenderer;
-
     private Coroutine _targetCoruntine;
 
     private void Start()
     {
         _sriteRenderer = GetComponent<SpriteRenderer>();
-        transform.position = _firstPoint.position;
-
         StartCoroutine(ChangeDirection());
     }
 
@@ -27,46 +23,34 @@ public class PatrolEnemy : MonoBehaviour
     {
         while (_isEnemyPatroling)
         {
-            if (transform.position == _firstPoint.position)
+            for (int index = 1; index < _points.Length - 1; index++)
             {
-                _sriteRenderer.flipX = false;
-
-                if (_targetCoruntine == null)
+                if (transform.position.x - _points[index].position.x > 0)
                 {
-                    _targetCoruntine = StartCoroutine(GoToTarget(_secondPoint));
+                    _sriteRenderer.flipX = true;
                 }
 
                 else
                 {
-                    StopCoroutine(_targetCoruntine);
-                    _targetCoruntine = StartCoroutine(GoToTarget(_secondPoint));
-                }
-            }
-
-            else if (transform.position == _secondPoint.position)
-            {
-                _sriteRenderer.flipX = true;
-
-                if (_targetCoruntine == null)
-                {
-                    _targetCoruntine = StartCoroutine(GoToTarget(_firstPoint));
+                    _sriteRenderer.flipX = false;
                 }
 
-                else
+                Debug.Log("UwU");
+
+                if (_targetCoruntine != null)
                 {
                     StopCoroutine(_targetCoruntine);
-                    _targetCoruntine = StartCoroutine(GoToTarget(_firstPoint));
                 }
+                
+                _targetCoruntine = StartCoroutine(GoToTarget(_points[index]));
+                
+                yield return null;
             }
-
-            yield return null;
         }
     }
 
     private IEnumerator GoToTarget(Transform target)
     {
-        Debug.Log("uwu");
-
         while (transform.position != target.position)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);

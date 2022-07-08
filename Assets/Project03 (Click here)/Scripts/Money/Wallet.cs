@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Wallet : MonoBehaviour
 {
-    [SerializeField] int _money;
+    [SerializeField] private int _money;
 
     public void IcreaseMoney()
     {

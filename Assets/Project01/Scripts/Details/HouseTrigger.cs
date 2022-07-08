@@ -16,7 +16,7 @@ public class HouseTrigger : MonoBehaviour
     {
         Debug.Log("*_*");
 
-        if (collision.TryGetComponent(out WalkingObject result))
+        if (collision.TryGetComponent(out Movement result))
         {
             if (_isPlayerInStreet)
             {

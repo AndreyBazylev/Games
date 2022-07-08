@@ -64,7 +64,7 @@
     <Compile Include="Assets\Project03 (Click here)\Scripts\Enemys\PatrolEnemy.cs" />
     <Compile Include="Assets\Project03 (Click here)\Scripts\Money\Money.cs" />
     <Compile Include="Assets\Project03 (Click here)\Scripts\Money\Wallet.cs" />
-    <Compile Include="Assets\Project03 (Click here)\Scripts\Player\WalkingObject.cs" />
+    <Compile Include="Assets\Project03 (Click here)\Scripts\Player\Movement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out WalkingObject result))
+        if (collision.TryGetComponent(out Movement result))
         {
             Destroy(collision.gameObject);
             _audioSource?.PlayOneShot(_shotSound);
