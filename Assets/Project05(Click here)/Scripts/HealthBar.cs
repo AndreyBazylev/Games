@@ -20,6 +20,11 @@ public class HealthBar : MonoBehaviour
         _healthBar = _health;
     }
 
+    private void Update()
+    {
+        PrintHealth(_healthBar);
+    }
+
     public void IncreaseDeltaHealth()
     {
         _health += _chageHealthSize;
@@ -57,7 +62,6 @@ public class HealthBar : MonoBehaviour
         while (_healthBar != _health)
         {
             _healthBar = Mathf.MoveTowards(_healthBar, _health, _healthChangeSpeed);
-            PrintHealth(_healthBar);
             yield return null;
         }
     }
