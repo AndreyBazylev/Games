@@ -8,13 +8,25 @@ public class Bar : MonoBehaviour
 {
     [SerializeField] private Slider _barSlider;
     [SerializeField] private Text _barText;
+    [SerializeField] private Health _health;
+    [SerializeField] private float _healthChangeSpeed;
+
+    private Coroutine _currentCorountine;
 
     private float _value;
 
-    public void SetValue(float newValue)
+    public void RestartHeathCorountine()
     {
-        _value = newValue;
-        PrintValue();
+        if (_currentCorountine == null)
+        {
+            _currentCorountine = StartCoroutine(ChangeHealth());
+        }
+
+        else
+        {
+            StopCoroutine(_currentCorountine);
+            _currentCorountine = StartCoroutine(ChangeHealth());
+        }
     }
 
     private void PrintValue()
@@ -23,5 +35,13 @@ public class Bar : MonoBehaviour
         _barSlider.value = _value;
     }
 
-    
+    private IEnumerator ChangeHealth()
+    {
+        while (_value != _health.GetHealthValue())
+        {
+            _value = Mathf.MoveTowards(_value, _health.GetHealthValue(), _healthChangeSpeed);
+            PrintValue();
+            yield return null;
+        }
+    }
 }

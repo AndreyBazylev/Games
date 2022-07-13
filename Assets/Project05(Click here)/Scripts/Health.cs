@@ -3,59 +3,29 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private Bar _healthBarOdject;
-    [SerializeField] private float _healthChangeSpeed;
     [SerializeField] private float _chageHealthSize;
+    [SerializeField] private UnityEvent _isIcreaseOrDecrease;
 
     private float _health = 100;
-    private float _healthBar;
-    private Coroutine _currentCorountine;
-
-    private void Start()
-    {
-        _healthBar = _health;
-    }
-
-    private void Update()
-    {
-        _healthBarOdject.SetValue(_healthBar);
-    }
 
     public void IncreaseDeltaHealth()
     {
         _health += _chageHealthSize;
-        RestartHeathCorountine();
+        _isIcreaseOrDecrease.Invoke();
     }
 
     public void DecreaseDeltaHealth()
     {
         _health -= _chageHealthSize;
-        RestartHeathCorountine();
+        _isIcreaseOrDecrease.Invoke();
     }
 
-    private void RestartHeathCorountine()
+    public float GetHealthValue()
     {
-        if (_currentCorountine == null)
-        {
-            _currentCorountine = StartCoroutine(ChangeHealth());
-        }
-
-        else
-        {
-            StopCoroutine(_currentCorountine);
-            _currentCorountine = StartCoroutine(ChangeHealth());
-        }
-    }
-
-    private IEnumerator ChangeHealth()
-    {
-        while (_healthBar != _health)
-        {
-            _healthBar = Mathf.MoveTowards(_healthBar, _health, _healthChangeSpeed);
-            yield return null;
-        }
+        return _health;
     }
 }
