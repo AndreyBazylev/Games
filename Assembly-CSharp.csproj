@@ -100,7 +100,8 @@
     <Compile Include="Assets\Project04\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Project04\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Project04\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Project05(Click here)\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Project05(Click here)\Scripts\Bar.cs" />
+    <Compile Include="Assets\Project05(Click here)\Scripts\Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project04\TextMesh Pro\Shaders\TMPro.cginc" />

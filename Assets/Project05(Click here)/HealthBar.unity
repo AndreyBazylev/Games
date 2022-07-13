@@ -279,7 +279,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 825554117}
   - component: {fileID: 825554116}
   - component: {fileID: 825554118}
+  - component: {fileID: 825554119}
   m_Layer: 5
   m_Name: HealthProc
   m_TagString: Untagged
@@ -573,10 +574,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8effd715eb453f4cbbcc7224a325e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarSlider: {fileID: 265985609}
-  _healthBarText: {fileID: 825554116}
+  _healthBarOdject: {fileID: 825554119}
   _healthChangeSpeed: 0.1
   _chageHealthSize: 5
+--- !u!114 &825554119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825554114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d838b3f931121498043818d1033757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barSlider: {fileID: 265985609}
+  _barText: {fileID: 825554116}
 --- !u!1 &1019462186
 GameObject:
   m_ObjectHideFlags: 0
