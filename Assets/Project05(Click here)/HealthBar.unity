@@ -576,6 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chageHealthSize: 5
   _maxHealth: 100
+  _health: 100
 --- !u!114 &825554119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +750,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 825554118}
-        m_MethodName: DecreaseDeltaHealth
+        m_MethodName: TakeDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -915,7 +916,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 825554118}
-        m_MethodName: IncreaseDeltaHealth
+        m_MethodName: Hil
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

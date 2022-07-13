@@ -18,21 +18,17 @@ public class Bar : MonoBehaviour
 
     private void Start()
     {
-        _health.IsIcreaseOrDecrease += RestartHeathCorountine;
+        _health.HealthIcreasedOrDecreased += RestartHeathCorountine;
     }
 
     public void RestartHeathCorountine(float health, float _maxHealth)
     {
         _barSlider.maxValue = _maxHealth;
 
-        if (_currentCorountine == null)
-        {
-            _currentCorountine = StartCoroutine(ChangeHealth(health));
-            return;
-        }
+        if(_currentCorountine != null)
+            StopCoroutine(_currentCorountine);
 
-        StopCoroutine(_currentCorountine);
-        _currentCorountine = StartCoroutine(ChangeHealth(health));
+        _currentCorountine = StartCoroutine(ChangeHealth(health, _maxHealth));
     }
 
     private void PrintValue()
@@ -41,9 +37,9 @@ public class Bar : MonoBehaviour
         _barSlider.value = _value;
     }
 
-    private IEnumerator ChangeHealth(float targetHealth)
+    private IEnumerator ChangeHealth(float targetHealth, float maxHealth)
     {
-        while (_value != targetHealth)
+        while (_value != targetHealth && _value <= maxHealth)
         {
             _value = Mathf.MoveTowards(_value, targetHealth, _healthChangeSpeed);
             PrintValue();

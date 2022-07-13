@@ -7,34 +7,28 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] public event Action<float, float> IsIcreaseOrDecrease;
+    [SerializeField] public event Action<float, float> HealthIcreasedOrDecreased;
     [SerializeField] private float _chageHealthSize;
     [SerializeField] private float _maxHealth;
 
-    private float _health;
+    [SerializeField]  float _health;
 
     private void Start()
     {
         _maxHealth = 100;
         _health = _maxHealth;
-        IsIcreaseOrDecrease?.Invoke(_health, _maxHealth);
+        HealthIcreasedOrDecreased?.Invoke(_health, _maxHealth);
     }
 
-    public void IncreaseDeltaHealth()
+    public void Hil()
     {
-        if(_health + _chageHealthSize <= _maxHealth)
-        {
-            _health += _chageHealthSize;
-            IsIcreaseOrDecrease?.Invoke(_health, _maxHealth);
-        }    
+        _health = Mathf.Clamp(_health, 0, _maxHealth) + _chageHealthSize;
+        HealthIcreasedOrDecreased?.Invoke(_health, _maxHealth);   
     }
 
-    public void DecreaseDeltaHealth()
+    public void TakeDamage()
     {
-        if (_health - _chageHealthSize <= _maxHealth)
-        {
-            _health -= _chageHealthSize;
-            IsIcreaseOrDecrease?.Invoke(_health, _maxHealth);
-        }
+        _health = Mathf.Clamp(_health, 0, _maxHealth) - _chageHealthSize;
+        HealthIcreasedOrDecreased?.Invoke(_health, _maxHealth);
     }
 }
