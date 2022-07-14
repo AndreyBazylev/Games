@@ -6,17 +6,14 @@ using UnityEngine.UI;
 public class Bar : MonoBehaviour
 {
     [SerializeField] private Slider _barSlider;
-    [SerializeField] private Text _barText;
     [SerializeField] private Health _health;
     [SerializeField] private float _healthChangeSpeed;
 
     private Coroutine _currentCorountine;
 
-    private float _value;
-
     private void Start()
     {
-        _health.Changed.AddListener(RestartHeathCorountine);
+        _health.Changed += RestartHeathCorountine;
     }
 
     public void RestartHeathCorountine(float health, float maxHealth)
@@ -26,16 +23,14 @@ public class Bar : MonoBehaviour
         if(_currentCorountine != null)
             StopCoroutine(_currentCorountine);
 
-        _currentCorountine = StartCoroutine(ChangeHealth(health, maxHealth));
+        _currentCorountine = StartCoroutine(ChangeHealth(health));
     }
 
-    private IEnumerator ChangeHealth(float targetHealth, float maxHealth)
+    private IEnumerator ChangeHealth(float targetHealth)
     {
-        while (_value != targetHealth && _value <= maxHealth)
+        while (_barSlider.value != targetHealth)
         {
-            _value = Mathf.MoveTowards(_value, targetHealth, _healthChangeSpeed);
-            _barSlider.value = _value;
-            _barText.text = Convert.ToString(Convert.ToInt32(_value)) + '%';
+            _barSlider.value = Mathf.MoveTowards(_barSlider.value, targetHealth, _healthChangeSpeed);
             yield return null;
         }
     }
