@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System;
 
 public class Bar : MonoBehaviour
 {
@@ -18,23 +16,17 @@ public class Bar : MonoBehaviour
 
     private void Start()
     {
-        _health.HealthIcreasedOrDecreased += RestartHeathCorountine;
+        _health.Changed.AddListener(RestartHeathCorountine);
     }
 
-    public void RestartHeathCorountine(float health, float _maxHealth)
+    public void RestartHeathCorountine(float health, float maxHealth)
     {
-        _barSlider.maxValue = _maxHealth;
+        _barSlider.maxValue = maxHealth;
 
         if(_currentCorountine != null)
             StopCoroutine(_currentCorountine);
 
-        _currentCorountine = StartCoroutine(ChangeHealth(health, _maxHealth));
-    }
-
-    private void PrintValue()
-    {
-        _barText.text = Convert.ToString(Convert.ToInt32(_value)) + '%';
-        _barSlider.value = _value;
+        _currentCorountine = StartCoroutine(ChangeHealth(health, maxHealth));
     }
 
     private IEnumerator ChangeHealth(float targetHealth, float maxHealth)
@@ -42,8 +34,10 @@ public class Bar : MonoBehaviour
         while (_value != targetHealth && _value <= maxHealth)
         {
             _value = Mathf.MoveTowards(_value, targetHealth, _healthChangeSpeed);
-            PrintValue();
+            _barSlider.value = _value;
+            _barText.text = Convert.ToString(Convert.ToInt32(_value)) + '%';
             yield return null;
         }
     }
 }
+
