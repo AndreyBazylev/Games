@@ -7,8 +7,18 @@ public class Wallet : MonoBehaviour
 {
     [SerializeField] private int _money;
 
-    public void IcreaseMoney()
+    public void IcreaseMoney(int count)
     {
-        _money++;
+        _money += count;
+    }
+
+    public void DecreaseMoney(int count)
+    {
+        _money -= count;
+    }
+
+    public int GetMoney()
+    {
+        return _money;
     }
 }

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Project05(Click here)/HealthBar.unity
+- path: Assets/Project06 (Click here)/Arena.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

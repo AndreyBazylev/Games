@@ -9,7 +9,7 @@ public class Money : MonoBehaviour
     {
         if (collision.TryGetComponent(out Wallet result))
         {
-            result.IcreaseMoney();
+            result.IcreaseMoney(1);
             Destroy(gameObject);
         }
     }
