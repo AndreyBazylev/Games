@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7568848595463624198}
   - component: {fileID: 5204196621180571953}
   - component: {fileID: 8150092474432833008}
-  - component: {fileID: 3550893943109206191}
+  - component: {fileID: 3007841089136473529}
   m_Layer: 0
   m_Name: TriangleEnemy
   m_TagString: Untagged
@@ -152,6 +152,7 @@ MonoBehaviour:
   _stateName: 
   _stateAnimator: {fileID: 8150092474432833008}
   _isStartState: 0
+  _playerWallet: {fileID: 0}
 --- !u!114 &844812038533813425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _damage: 1
+  _priceForDead: 1
 --- !u!114 &7568848595463624198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +185,7 @@ MonoBehaviour:
   _going: {fileID: 8947032937949548070}
   _attack: {fileID: 2776861092014660818}
   _enemy: {fileID: 844812038533813425}
+  _playerWallet: {fileID: 0}
   _enemyWentTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -237,8 +240,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &3550893943109206191
-BoxCollider2D:
+--- !u!58 &3007841089136473529
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -250,16 +253,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.000995028, y: -0.028109757}
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Radius: 0.055870406

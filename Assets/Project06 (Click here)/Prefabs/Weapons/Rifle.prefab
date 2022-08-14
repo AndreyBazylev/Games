@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4926182270312462851}
   - component: {fileID: 9063429937356893501}
-  - component: {fileID: 2898776062782521182}
+  - component: {fileID: 5685534353348313521}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1276084711190054720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.061673, y: -0.698, z: 0}
-  m_LocalScale: {x: 1.9709, y: 1.9709, z: 1.9709}
+  m_LocalScale: {x: 9.078952, y: 9.078952, z: 9.078952}
   m_Children:
   - {fileID: 6596622287687633253}
   m_Father: {fileID: 0}
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7446731183550929329, guid: 87d27f3b7c3141949ad7cb62d18cdecd,
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -6523628323415844430, guid: 2b72cc0b9e86c8847a2ab0322f4ec798,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2898776062782521182
+--- !u!114 &5685534353348313521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,13 +93,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276084711190054720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 878b02a875f1b1d43908a2ada2fcc83e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6973199987ba909429445b640139a1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: 0
   _weaponSpeed: 5
-  _bullet: {fileID: 5680103610582068458, guid: e411baa1da540094585eb3f3dac32235, type: 3}
+  _bullet: {fileID: 5395418882319160241, guid: e411baa1da540094585eb3f3dac32235, type: 3}
   _shotDirection: {fileID: 6596622287687633253}
+  _playerWallet: {fileID: 0}
 --- !u!1 &4802685723002452436
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4802685723002452436}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.48, y: 0.022, z: 0}
+  m_LocalPosition: {x: 0.1335, y: -0.0312, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4926182270312462851}

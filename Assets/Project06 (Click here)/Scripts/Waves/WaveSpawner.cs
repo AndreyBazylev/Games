@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Wave _wave;
 
     private int _enemySpawned;
-    private WaitForSeconds _wait = new WaitForSeconds(2.5f);
+    private WaitForSeconds _wait = new WaitForSeconds(1f);
 
     private void Start()
     {
@@ -22,8 +21,18 @@ public class WaveSpawner : MonoBehaviour
 
         while (_enemySpawned <= _wave.GetEnemyCount())
         {
-            _enemySpawned++;
-            Instantiate(_enemyPrefab, gameObject.transform);
+            WaveEnemy newWaveEnemy = _wave.GetRandomEnemy(out bool isSucces);
+
+            if (isSucces)
+            {
+                Instantiate(newWaveEnemy, transform.position, transform.rotation);
+            }
+
+            else
+            {
+                StopCoroutine(SpawnEnemy());
+            }
+
             yield return _wait;
         }
     }

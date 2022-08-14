@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float _bulletSpeed;
     [SerializeField] protected float _bulletDamage;
+    [SerializeField] protected Wallet _playerWallet;
 
     void Update()
     {
@@ -16,8 +17,19 @@ public class Bullet : MonoBehaviour
     {
         if (collision.GetComponent<WaveEnemy>())
         {
-            collision.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage);
-            Destroy(gameObject);
+            GiveDamage(collision.gameObject);
         }
+    }
+
+    public void SetWallet(Wallet wallet)
+    {
+        _playerWallet = wallet;
+    }
+
+    protected virtual void GiveDamage(GameObject waveEnemy)
+    {
+        waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
+        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage);
+        Destroy(gameObject);
     }
 }

@@ -6,6 +6,7 @@ public class WaveEnemy : MonoBehaviour
 {
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
+    [SerializeField] private int _priceForDead;
 
     public void TakeDamage(float damage)
     {
@@ -20,5 +21,10 @@ public class WaveEnemy : MonoBehaviour
     public float GetHealth()
     {
         return _health;
+    }
+
+    public int GetPrice()
+    {
+        return _priceForDead;
     }
 }

@@ -7,7 +7,7 @@ public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private Health _playerHealth;
     [SerializeField] private Image _bar;
-    [SerializeField] private Image _slime;
+    [SerializeField] private SpriteRenderer _slime;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private Sprite[] _slimes;
 
