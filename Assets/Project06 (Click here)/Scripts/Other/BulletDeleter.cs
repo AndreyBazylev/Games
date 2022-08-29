@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class BulletDeleter : MonoBehaviour
 {
+    private int _bulletPast;
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Bullet>())
         {
-            Debug.Log("Жора");
+            _bulletPast++;
             Destroy(collision.gameObject);
         }
+    }
+
+    public int GetBulletPastCount()
+    {
+        return _bulletPast;
     }
 }

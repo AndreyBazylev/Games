@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] public event UnityAction<float, float> Changed;
     [SerializeField] private float _maxHealth = 100;
 
+    private bool _isTakenDamage = false;
+
     private float _health;
 
     private void Start()
@@ -34,15 +36,22 @@ public class Health : MonoBehaviour
         _health = Mathf.Clamp(_health - damageSize, 0, _maxHealth);
         Changed?.Invoke(_health, _maxHealth);
 
+        _isTakenDamage = true;
+
         if (_health <= 0)
         {
             Die();
         }
     }
 
+    public bool GetTakenDamage()
+    {
+        return _isTakenDamage;
+    }
+
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
 

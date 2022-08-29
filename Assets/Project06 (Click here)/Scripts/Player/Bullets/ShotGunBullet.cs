@@ -13,4 +13,9 @@ public class ShotGunBullet : Bullet
             _bullets[index].SetWallet(_playerWallet);
         }
     }
+
+    protected override void GiveDamage(GameObject waveEnemy)
+    {
+        
+    }
 }

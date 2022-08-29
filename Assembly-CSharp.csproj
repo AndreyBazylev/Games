@@ -101,6 +101,7 @@
     <Compile Include="Assets\Project04\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Project04\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Project05\Scripts\Bar.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Enemy\Other\PlanesBaker.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Enemy\WaveEnemy.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Other\Apparate\Apparate.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Other\Apparate\ApparateController.cs" />
@@ -111,6 +112,9 @@
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Bullets\RocketLauncherBullet.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Bullets\ShotGunBullet.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Health.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Menu\LevelEndController.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Menu\LevelSelectionController.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Menu\MenuController.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\PlayerHealthBar.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Weapons\AutoWeapon.cs" />
@@ -118,6 +122,9 @@
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Weapons\Rifle.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Player\Weapons\Weapon.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\State.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\Drone\DroneAttack.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\Drone\DroneGoing.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\Drone\DroneStateMachine.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyAttackState.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyDieState.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyGoingState.cs" />
@@ -128,6 +135,7 @@
     <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\EnemyInWave.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\Wave.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\WaveSpawner.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\WavesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project04\TextMesh Pro\Shaders\TMPro.cginc" />

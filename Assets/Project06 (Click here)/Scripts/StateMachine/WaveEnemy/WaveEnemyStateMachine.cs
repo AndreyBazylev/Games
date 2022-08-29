@@ -11,17 +11,15 @@ using UnityEngine.Events;
 
 public class WaveEnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] private WaveEnemyDieState _die;
-    [SerializeField] private WaveEnemyIdleState _idle;
-    [SerializeField] private WaveEnemyGoingState _going;
-    [SerializeField] private WaveEnemyAttackState _attack;
+    [SerializeField] protected WaveEnemyDieState _die;
+    [SerializeField] protected WaveEnemyIdleState _idle;
+    [SerializeField] protected WaveEnemyGoingState _going;
+    [SerializeField] protected WaveEnemyAttackState _attack;
 
-    [SerializeField] private WaveEnemy _enemy;
+    [SerializeField] protected WaveEnemy _enemy;
 
-    [SerializeField] private Wallet _playerWallet;
-    [SerializeField] private UnityEvent _enemyWentTrigger;
-
-    private Coroutine _currentCorountine;
+    [SerializeField] protected Wallet _playerWallet;
+    [SerializeField] protected UnityEvent _enemyWentTrigger;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,7 +28,7 @@ public class WaveEnemyStateMachine : MonoBehaviour
             _enemyWentTrigger?.Invoke();
             _attack.enabled = true;
             _going.enabled = false;
-            _currentCorountine = StartCoroutine(_attack.StartAttack(collision, _enemy.GetDamage()));
+            _attack.StartAttack(collision, _enemy.GetDamage());
         }
     }
 
@@ -40,7 +38,6 @@ public class WaveEnemyStateMachine : MonoBehaviour
         {
             _enemyWentTrigger?.Invoke();
             _attack.enabled = false;
-            StopCoroutine(_currentCorountine);
         }
     }
 

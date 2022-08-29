@@ -34,7 +34,7 @@ public class WaveEnemyGoingState : State
         StopCoroutine(_goToCoruontine);
     }
 
-    public void SetEnemyPosition()
+    public virtual void SetEnemyPosition()
     {
         _isEnemyInTrigger = !_isEnemyInTrigger;
     }
