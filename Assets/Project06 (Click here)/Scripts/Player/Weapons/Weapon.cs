@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Weapon : MonoBehaviour
 {
     [SerializeField] protected float _offset;
@@ -9,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Bullet _bullet;
     [SerializeField] protected Transform _shotDirection;
     [SerializeField] protected Wallet _playerWallet;
+    [SerializeField] protected AudioClip _fireSound;
 
     protected Vector3 _difference;
     protected float _rotateZ;
@@ -35,6 +38,7 @@ public class Weapon : MonoBehaviour
         {
             if (_waitTime * Time.deltaTime > _weaponSpeed)
             {
+                GetComponent<AudioSource>().PlayOneShot(_fireSound);
                 Bullet newBullet = Instantiate(_bullet, _shotDirection.position, _shotDirection.transform.rotation);
                 newBullet.SetWallet(_playerWallet);
                 _waitTime = 0;

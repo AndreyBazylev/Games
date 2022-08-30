@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private int _damage;
+    [SerializeField] protected AudioClip _tock;
 
     private Wallet _playerWallet;
     private ParticleSystemRenderer _psr;
@@ -16,7 +17,7 @@ public class Bomb : MonoBehaviour
         if (collision.GetComponent<WaveEnemy>())
         {
             collision.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-            collision.GetComponent<WaveEnemy>().TakeDamage(_damage);
+            collision.GetComponent<WaveEnemy>().TakeDamage(_damage, _tock);
             GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             Instantiate(_psr, transform.position, transform.rotation);

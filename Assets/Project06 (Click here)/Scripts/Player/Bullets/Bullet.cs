@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float _bulletSpeed;
     [SerializeField] protected float _bulletDamage;
     [SerializeField] protected Wallet _playerWallet;
+    [SerializeField] protected AudioClip _tock;
 
     void Update()
     {
@@ -29,7 +32,7 @@ public class Bullet : MonoBehaviour
     protected virtual void GiveDamage(GameObject waveEnemy)
     {
         waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage);
+        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage, _tock);
         Destroy(gameObject);
     }
 }

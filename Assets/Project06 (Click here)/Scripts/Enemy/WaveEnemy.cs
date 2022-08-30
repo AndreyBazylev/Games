@@ -8,10 +8,29 @@ public class WaveEnemy : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private int _priceForDead;
     [SerializeField] private Vector3 _offset;
+    [SerializeField] private AudioClip _simpleDeathSound;
 
-    public void TakeDamage(float damage)
+    private AudioClip _deathSound;
+
+    public void TakeDamage(float damage, AudioClip tock)
     {
         _health -= damage;
+
+        if (_health > 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(tock);
+        }
+
+        else 
+        {
+            GetComponent<AudioSource>().PlayOneShot(_simpleDeathSound);
+            SetDeathSound(tock);
+        }
+    }
+
+    public void SetDeathSound(AudioClip deathSound)
+    {
+        _deathSound = deathSound;
     }
 
     public float GetDamage()
@@ -32,5 +51,10 @@ public class WaveEnemy : MonoBehaviour
     public Vector3 GetOffeset()
     {
         return _offset;
+    }
+
+    public AudioClip GetDethSound()
+    {
+        return _deathSound;
     }
 }

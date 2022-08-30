@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveEnemyDieState : State
 {
     [SerializeField] private Wallet _playerWallet;
+    [SerializeField] private AudioClip _deathSound;
 
     private const string IsDead = "IsDead";
     private const string Delete = "Delete";
@@ -17,7 +18,8 @@ public class WaveEnemyDieState : State
     private void OnEnable()
     {
         _stateAnimator.SetBool(IsDead, true);
-
+        _deathSound = GetComponent<WaveEnemy>().GetDethSound();
+        GetComponent<AudioSource>().PlayOneShot(_deathSound);
         _playerWallet.IcreaseMoney(gameObject.GetComponent<WaveEnemy>().GetPrice());
     }
 

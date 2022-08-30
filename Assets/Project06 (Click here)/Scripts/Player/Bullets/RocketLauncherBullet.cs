@@ -11,7 +11,7 @@ public class RocketLauncherBullet : Bullet
     protected override void GiveDamage(GameObject waveEnemy)
     {
         waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage);
+        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage, _tock);
         gameObject.GetComponent<Animator>().SetBool(Boom, true);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().gravityScale = 0;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaveEnemyAttackState : State
 {
+    [SerializeField] protected AudioClip _attackSound;
+
     protected WaitForSeconds _waitTime;
 
     protected const string IsNextToPlayer = "IsNextToPlayer";
@@ -33,6 +35,7 @@ public class WaveEnemyAttackState : State
     {
         while (collision.GetComponent<Health>().GetHealth() > 0)
         {
+            GetComponent<AudioSource>().PlayOneShot(_attackSound);
             Attack(collision, damage);
             yield return _waitTime;
         }

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
+  _tock: {fileID: 8300000, guid: a56cbb8ee26d5bd4c86c3e08cf22b246, type: 3}
 --- !u!50 &5831659963846383889
 Rigidbody2D:
   serializedVersion: 4

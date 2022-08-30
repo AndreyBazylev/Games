@@ -101,6 +101,7 @@ MonoBehaviour:
   _bullet: {fileID: 0}
   _shotDirection: {fileID: 5814045611781852787}
   _playerWallet: {fileID: 0}
+  _fireSound: {fileID: 8300000, guid: d0141c6af6976084b8a43555d9c7cb1f, type: 3}
 --- !u!1 &5814045611781852784
 GameObject:
   m_ObjectHideFlags: 0

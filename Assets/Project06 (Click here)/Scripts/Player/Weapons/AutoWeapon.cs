@@ -10,6 +10,7 @@ public class AutoWeapon : Weapon
         {
             if (_waitTime * Time.deltaTime > _weaponSpeed)
             {
+                GetComponent<AudioSource>().PlayOneShot(_fireSound);
                 Bullet newBullet = Instantiate(_bullet, _shotDirection.position, _shotDirection.transform.rotation);
                 newBullet.SetWallet(_playerWallet);
                 _waitTime = 0;
