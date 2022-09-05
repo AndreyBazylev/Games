@@ -7,37 +7,59 @@ public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private Health _playerHealth;
     [SerializeField] private Image _bar;
-    [SerializeField] private SpriteRenderer _slime;
-    [SerializeField] private Sprite[] _sprites;
-    [SerializeField] private Sprite[] _slimes;
+    [SerializeField] private SpriteRenderer _player;
+    [SerializeField] private Sprite[] _healthValueSprites;
+    [SerializeField] private Sprite[] _slimeHealthSprites;
 
-    private void Update()
+    private int _barValue;
+
+    private int _firstSlimeStage = 35;
+    private int _firstSlimeStageNumber = 0;
+
+    private int _secondSlimeStage = 30;
+    private int _secondSlimeStageNumber = 1;
+
+    private int _thirdSlimeStage = 20;
+    private int _thirdSlimeStageNumber = 2;
+
+    private int _fourthSlimeStage = 10;
+    private int _fourthSlimeStageNumber = 3;
+
+    private int _fifthSlimeStageNumber = 4;
+
+    private void Start()
     {
-        _bar.sprite = _sprites[(int)_playerHealth.GetHealth()];
+        _playerHealth.Changed += SetHealth;
+    }
 
-        if (_playerHealth.GetHealth() >= 40)
-        {
-            _slime.sprite = _slimes[0];
-        }
-       
-        else if (_playerHealth.GetHealth() < 40 && _playerHealth.GetHealth() > 30)
-        {
-            _slime.sprite = _slimes[1];
-        }
+    private void SetHealth(float _health, float _maxHealth)
+    {
+        _barValue = (int)_health;
+        _bar.sprite = _healthValueSprites[_barValue];
 
-        else if (_playerHealth.GetHealth() < 30 && _playerHealth.GetHealth() > 20)
+        if (_barValue >= _firstSlimeStage)
         {
-            _slime.sprite = _slimes[2];
+            _player.sprite = _slimeHealthSprites[_firstSlimeStageNumber];
         }
 
-        else if (_playerHealth.GetHealth() < 20 && _playerHealth.GetHealth() > 10)
+        else if (_barValue < _firstSlimeStage && _barValue >= _secondSlimeStage)
         {
-            _slime.sprite = _slimes[3];
+            _player.sprite = _slimeHealthSprites[_secondSlimeStageNumber];
         }
 
-        else if (_playerHealth.GetHealth() < 10)
+        else if (_barValue < _secondSlimeStage && _barValue >= _thirdSlimeStage)
         {
-            _slime.sprite = _slimes[4];
+            _player.sprite = _slimeHealthSprites[_thirdSlimeStageNumber];
+        }
+
+        else if (_barValue < _thirdSlimeStage && _barValue >= _fourthSlimeStage)
+        {
+            _player.sprite = _slimeHealthSprites[_fourthSlimeStageNumber];
+        }
+
+        else
+        {
+            _player.sprite = _slimeHealthSprites[_fifthSlimeStageNumber];
         }
     }
 }

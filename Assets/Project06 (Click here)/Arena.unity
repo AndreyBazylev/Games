@@ -351,10 +351,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerHealth: {fileID: 916174227}
   _bar: {fileID: 157367197}
-  _slime: {fileID: 1627952133}
-  _sprites:
+  _player: {fileID: 1627952133}
+  _healthValueSprites:
   - {fileID: 3933553305987338256, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
-  - {fileID: 5267382872813406031, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
   - {fileID: -5726476209138354340, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
   - {fileID: 1996530842787197575, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
   - {fileID: 4153348612448055930, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
@@ -399,7 +398,8 @@ MonoBehaviour:
   - {fileID: 5032351099696674128, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
   - {fileID: -3178617384780871938, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
   - {fileID: -8227546954408941770, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
-  _slimes:
+  - {fileID: -8227546954408941770, guid: 453e1310bcdc10241967d75f088336c4, type: 3}
+  _slimeHealthSprites:
   - {fileID: -4992291876999666385, guid: 85ed31adbe1d0524097276c979d97a68, type: 3}
   - {fileID: 8485533541666680810, guid: 85ed31adbe1d0524097276c979d97a68, type: 3}
   - {fileID: -2489387632810687797, guid: 85ed31adbe1d0524097276c979d97a68, type: 3}
@@ -6325,6 +6325,7 @@ MonoBehaviour:
   _stateName: 
   _stateAnimator: {fileID: 1094326669}
   _isStartState: 0
+  _attackSound: {fileID: 0}
 --- !u!82 &1094326675
 AudioSource:
   m_ObjectHideFlags: 0

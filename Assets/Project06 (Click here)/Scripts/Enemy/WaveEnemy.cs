@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(WaveEnemyStateMachine))]
+
 public class WaveEnemy : MonoBehaviour
 {
     [SerializeField] private float _health;

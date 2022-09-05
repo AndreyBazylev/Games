@@ -11,15 +11,20 @@ public class LevelEndController : MonoBehaviour
 
     [SerializeField] private List<GameObject> _stars;
 
+    [SerializeField] private int _maxPastBullets = 25;
+
+    private const int _firstElement = 0;
+    private const int _defultStarsCount = 1;
+
     public void ShowEndPanel()
     {
         _wonPanel.SetActive(true);
 
-        int starIndex = 1;
+        int starIndex = _defultStarsCount;
 
-        _stars[0].SetActive(true);
+        _stars[_firstElement].SetActive(true);
 
-        if (_deleter.GetBulletPastCount() < 25)
+        if (_deleter.GetBulletPastCount() < _maxPastBullets)
         {
             _stars[starIndex].SetActive(true);
             starIndex++;

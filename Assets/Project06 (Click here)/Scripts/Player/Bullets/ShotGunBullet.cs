@@ -14,7 +14,7 @@ public class ShotGunBullet : Bullet
         }
     }
 
-    protected override void GiveDamage(GameObject waveEnemy)
+    protected override void GiveDamage(WaveEnemy waveEnemy)
     {
         
     }

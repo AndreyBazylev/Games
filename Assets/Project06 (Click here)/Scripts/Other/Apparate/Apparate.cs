@@ -43,7 +43,7 @@ public class Apparate : MonoBehaviour
         newBomb.SetWallet(_playerWallet);
         newBomb.SetParticles(_psr);
         StartReturnToStartPosition();
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     private void StartReturnToStartPosition()
@@ -60,7 +60,7 @@ public class Apparate : MonoBehaviour
 
         else
         {
-            gameObject.GetComponent<Collider2D>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
             _isFoundEnemy = false;
             gameObject.SetActive(false);
         }

@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.GetComponent<WaveEnemy>())
         {
-            GiveDamage(collision.gameObject);
+            GiveDamage(collision.GetComponent<WaveEnemy>());
         }
     }
 
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         _playerWallet = wallet;
     }
 
-    protected virtual void GiveDamage(GameObject waveEnemy)
+    protected virtual void GiveDamage(WaveEnemy waveEnemy)
     {
         waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
         waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage, _tock);

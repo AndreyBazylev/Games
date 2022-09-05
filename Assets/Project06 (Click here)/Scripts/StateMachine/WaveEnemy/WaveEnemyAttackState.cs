@@ -6,9 +6,9 @@ public class WaveEnemyAttackState : State
 {
     [SerializeField] protected AudioClip _attackSound;
 
-    protected WaitForSeconds _waitTime;
-
     protected const string IsNextToPlayer = "IsNextToPlayer";
+    
+    protected WaitForSeconds _waitTime;
 
     private void Start()
     {

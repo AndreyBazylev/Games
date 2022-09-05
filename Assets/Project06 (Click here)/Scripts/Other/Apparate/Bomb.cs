@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private int _damage;
     [SerializeField] protected AudioClip _tock;
 
-    private Wallet _playerWallet;
-    private ParticleSystemRenderer _psr;
+    [SerializeField] private int _damage;
+
     private const string IsFoundPlayer = "IsFoundPlayer";
     private const string IsBoomed = "Destroy";
+    
+    private Wallet _playerWallet;
+    private ParticleSystemRenderer _psr;
+    private Rigidbody2D _bombRigidbody;
+    private Animator _bombAnimator;
+
+    private void Start()
+    {
+        _bombRigidbody = GetComponent<Rigidbody2D>();
+        _bombAnimator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,16 +28,16 @@ public class Bomb : MonoBehaviour
         {
             collision.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
             collision.GetComponent<WaveEnemy>().TakeDamage(_damage, _tock);
-            GetComponent<Rigidbody2D>().gravityScale = 0;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            _bombRigidbody.gravityScale = 0;
+            _bombRigidbody.velocity = new Vector2(0, 0);
             Instantiate(_psr, transform.position, transform.rotation);
-            GetComponent<Animator>().SetBool(IsFoundPlayer, true);
+            _bombAnimator.SetBool(IsFoundPlayer, true);
         }
     }
 
     private void Update()
     {
-        var animatorStateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+        var animatorStateInfo = _bombAnimator.GetCurrentAnimatorStateInfo(0);
 
         if (animatorStateInfo.IsName(IsBoomed))
         {

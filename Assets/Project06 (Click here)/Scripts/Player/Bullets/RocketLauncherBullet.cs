@@ -2,31 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class RocketLauncherBullet : Bullet
 {
     private const string Boom = "IsBoom";
     private const string DestroyRocket = "RocketDestroy";
     private const string RocketIdle = "RocketIdle";
 
-    protected override void GiveDamage(GameObject waveEnemy)
+    private Animator _bulletAnimator;
+    private Rigidbody2D _bulletRigidbody;
+
+    private AnimatorStateInfo _animatorStateInfo;
+
+    private void Start()
+    {
+        _bulletAnimator = GetComponent<Animator>();
+        _bulletRigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    protected override void GiveDamage(WaveEnemy waveEnemy)
     {
         waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage, _tock);
+        waveEnemy.TakeDamage(_bulletDamage, _tock);
         gameObject.GetComponent<Animator>().SetBool(Boom, true);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        _bulletRigidbody.velocity = new Vector2(0, 0);
+        _bulletRigidbody.gravityScale = 0;
     }
 
     private void Update()
     {
-        var animatorStateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+        _animatorStateInfo = _bulletAnimator.GetCurrentAnimatorStateInfo(0);
 
-        if (animatorStateInfo.IsName(DestroyRocket))
+        if (_animatorStateInfo.IsName(DestroyRocket))
         {
             Destroy(gameObject);
         }
 
-        else if (animatorStateInfo.IsName(RocketIdle))
+        else if (_animatorStateInfo.IsName(RocketIdle))
         {
             transform.Translate(Vector2.up * _bulletSpeed * Time.deltaTime);
         }
