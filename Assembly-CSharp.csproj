@@ -67,6 +67,7 @@
     <Compile Include="Assets\Project03\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Project04\MenuScripts\ColorRebranding.cs" />
     <Compile Include="Assets\Project05\Scripts\Bar.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Enemy\Other\PlanesBaker.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Enemy\WaveEnemy.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Other\Apparate\Apparate.cs" />

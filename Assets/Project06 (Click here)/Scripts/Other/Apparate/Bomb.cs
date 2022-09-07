@@ -27,7 +27,7 @@ public class Bomb : MonoBehaviour
         if (collision.GetComponent<WaveEnemy>())
         {
             collision.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-            collision.GetComponent<WaveEnemy>().TakeDamage(_damage, _tock);
+            collision.GetComponent<EnemyHealth>().TakeDamage(_damage, _tock);
             _bombRigidbody.gravityScale = 0;
             _bombRigidbody.velocity = new Vector2(0, 0);
             Instantiate(_psr, transform.position, transform.rotation);

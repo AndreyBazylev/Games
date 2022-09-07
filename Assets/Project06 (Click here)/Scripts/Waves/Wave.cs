@@ -7,12 +7,11 @@ public class Wave : MonoBehaviour
     [SerializeField] private List<EnemyInWave> _enemys;
 
     private int _enemysCount;
-
     private void Start()
     {
         foreach (var item in _enemys)
         {
-            _enemysCount += item.GetEnemyCount();
+            _enemysCount += item.EnemyCount;
         }
     }
 
@@ -29,11 +28,11 @@ public class Wave : MonoBehaviour
         {
             result = _enemys[Random.Range(0, _enemys.Count)];
 
-            if (result.GetEnemyCount() > 0)
+            if (result.EnemyCount > 0)
             {
                 _enemysCount--;
                 result.DcreaseCount();
-                return result.GetPrefab();     
+                return result.EnemyPrefab;     
             }
         }
 

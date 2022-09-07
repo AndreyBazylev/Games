@@ -8,7 +8,6 @@ public class LevelSelectionController : MonoBehaviour
     [SerializeField] private int _currentLevel;
 
     private static int _maxLevels = 4;
-
     public void LoadNextLevel()
     {
         if (_currentLevel + 1 < _maxLevels)
@@ -17,7 +16,6 @@ public class LevelSelectionController : MonoBehaviour
             Application.LoadLevel(_currentLevel);
         }
     }
-
     public void LoadLevelAtIndex(int index)
     {
         if (index < _maxLevels)

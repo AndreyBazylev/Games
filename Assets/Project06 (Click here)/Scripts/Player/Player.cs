@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
 
     private int _currrentWeapon = 0;
-
     public void AddNewWeapon(Weapon weapon)
     {
         _weapons.Add(weapon);
@@ -29,7 +28,6 @@ public class Player : MonoBehaviour
             _weapons[_currrentWeapon].gameObject.SetActive(true);
         }
     }
-
     public void ChangePreviousWeapon()
     {
         if (_currrentWeapon - 1 >= 0)

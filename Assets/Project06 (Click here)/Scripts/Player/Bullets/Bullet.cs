@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected Wallet _playerWallet;
     [SerializeField] protected AudioClip _tock;
 
-    void Update()
+    private void Update()
     {
         transform.Translate(Vector2.up * _bulletSpeed * Time.deltaTime);
     }
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     protected virtual void GiveDamage(WaveEnemy waveEnemy)
     {
         waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.GetComponent<WaveEnemy>().TakeDamage(_bulletDamage, _tock);
+        waveEnemy.gameObject.GetComponent<EnemyHealth>().TakeDamage(_bulletDamage, _tock);
         Destroy(gameObject);
     }
 }

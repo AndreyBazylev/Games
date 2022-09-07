@@ -16,7 +16,7 @@ public class DroneStateMachine : WaveEnemyStateMachine
         {
             _enemyWentTrigger?.Invoke();
             _attack.enabled = true;
-            _attack.StartAttack(collision, _enemy.GetDamage());
+            _attack.StartAttack(collision, _enemy.Damage);
         }
     }
 }

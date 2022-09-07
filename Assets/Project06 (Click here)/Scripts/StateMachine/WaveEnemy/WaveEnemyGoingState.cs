@@ -9,18 +9,6 @@ public class WaveEnemyGoingState : State
     private const string IsFoundPlayer = "IsFoundPlayer";
     private bool _isEnemyInTrigger = false;
     private Coroutine _goToCoruontine;
-
-    private void Start()
-    {
-        _stateName = "Going";
-
-        if (_isStartState)
-        {
-            _stateAnimator.SetBool(IsFoundPlayer, true);
-            _goToCoruontine = StartCoroutine(GoToTarget());
-        }
-    }
-
     private void OnEnable()
     {
         _stateAnimator.SetBool(IsFoundPlayer, true);

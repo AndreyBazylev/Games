@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class EnemyInWave : MonoBehaviour
 {
-    [SerializeField] private WaveEnemy _enemyPrefab;
-    [SerializeField] private int _enemyCount;
-
-    public WaveEnemy GetPrefab()
-    {
-        return _enemyPrefab;
-    }
-
-    public int GetEnemyCount()
-    {
-        return _enemyCount;
-    }
-
+    [SerializeField] public WaveEnemy EnemyPrefab { get; private set; }
+    [SerializeField] public int EnemyCount { get; private set; }
     public void DcreaseCount()
     {
-        _enemyCount--;
+        EnemyCount--;
     }
 }

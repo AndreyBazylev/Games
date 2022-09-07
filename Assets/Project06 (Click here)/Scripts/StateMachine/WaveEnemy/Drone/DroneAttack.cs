@@ -8,17 +8,6 @@ public class DroneAttack : WaveEnemyAttackState
     [SerializeField] private WaveEnemy _waveEnemy;
 
     private const string IsFoundPlayer = "IsFoundPlayer";
-
-    private void Start()
-    {
-        _stateName = "Attack";
-
-        if (_isStartState)
-        {
-            _stateAnimator.SetBool(IsNextToPlayer, true);
-        }
-    }
-
     private void OnEnable()
     {
         _laser.SetActive(true);
@@ -30,7 +19,7 @@ public class DroneAttack : WaveEnemyAttackState
     {
         if (collision.GetComponent<Health>())
         {
-            StartAttack(collision, _waveEnemy.GetDamage());
+            StartAttack(collision, _waveEnemy.Damage);
         }
     }
 

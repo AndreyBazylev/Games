@@ -13,11 +13,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Wallet _playerWallet;
     [SerializeField] protected AudioClip _fireSound;
 
-    protected Vector3 _difference;
-    protected float _rotateZ;
     protected float _waitTime = 0;
 
-    void Update()
+    private Vector3 _difference;
+    private float _rotateZ;
+    private void Update()
     {
         _difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _rotateZ = Mathf.Atan2(_difference.y, _difference.x) * Mathf.Rad2Deg;
@@ -26,7 +26,6 @@ public class Weapon : MonoBehaviour
 
         Shoot();
     }
-
     public void SetWallet(Wallet wallet)
     {
         _playerWallet = wallet;

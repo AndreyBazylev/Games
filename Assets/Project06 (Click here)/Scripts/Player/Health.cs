@@ -13,7 +13,6 @@ public class Health : MonoBehaviour
     private bool _isTakenDamage = false;
 
     private float _health;
-
     private void Start()
     {
         _health = _maxHealth;

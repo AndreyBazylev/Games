@@ -9,18 +9,6 @@ public class WaveEnemyAttackState : State
     protected const string IsNextToPlayer = "IsNextToPlayer";
     
     protected WaitForSeconds _waitTime;
-
-    private void Start()
-    {
-        _stateName = "Attack";
-        _waitTime = new WaitForSeconds(2.5f);
-
-        if (_isStartState)
-        {
-            _stateAnimator.SetBool(IsNextToPlayer, true);
-        }
-    }
-
     private void OnDisable()
     {
         _stateAnimator.SetBool(IsNextToPlayer, false);

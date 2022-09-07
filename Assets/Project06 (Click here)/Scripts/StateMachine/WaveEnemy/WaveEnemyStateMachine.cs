@@ -21,6 +21,7 @@ public class WaveEnemyStateMachine : MonoBehaviour
     [SerializeField] protected Wallet _playerWallet;
     [SerializeField] protected UnityEvent _enemyWentTrigger;
 
+    private EnemyHealth _health;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Health>())
@@ -28,7 +29,7 @@ public class WaveEnemyStateMachine : MonoBehaviour
             _enemyWentTrigger?.Invoke();
             _attack.enabled = true;
             _going.enabled = false;
-            _attack.StartAttack(collision, _enemy.GetDamage());
+            _attack.StartAttack(collision, _enemy.Damage);
         }
     }
 
@@ -43,7 +44,7 @@ public class WaveEnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        if (_enemy.GetHealth() < 1)
+        if (_health.Health < 1)
         {
             _die.SetWallet(_playerWallet);
 
