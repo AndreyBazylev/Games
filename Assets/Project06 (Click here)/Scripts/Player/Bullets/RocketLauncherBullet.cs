@@ -15,16 +15,17 @@ public class RocketLauncherBullet : Bullet
     private Rigidbody2D _bulletRigidbody;
 
     private AnimatorStateInfo _animatorStateInfo;
+
     private void Start()
     {
         _bulletAnimator = GetComponent<Animator>();
         _bulletRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    protected override void GiveDamage(WaveEnemy waveEnemy)
+    protected override void GiveDamage(EnemyHealth enemyHealth)
     {
-        waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.gameObject.GetComponent<EnemyHealth>().TakeDamage(_bulletDamage, _tock);
+        enemyHealth.GetComponent<WaveEnemyStateMachine>().SetWallet(PlayerWallet);
+        enemyHealth.TakeDamage(BulletDamage, Tock);
         gameObject.GetComponent<Animator>().SetBool(Boom, true);
         _bulletRigidbody.velocity = new Vector2(0, 0);
         _bulletRigidbody.gravityScale = 0;
@@ -41,7 +42,7 @@ public class RocketLauncherBullet : Bullet
 
         else if (_animatorStateInfo.IsName(RocketIdle))
         {
-            transform.Translate(Vector2.up * _bulletSpeed * Time.deltaTime);
+            transform.Translate(Vector2.up * BulletSpeed * Time.deltaTime);
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private LevelSelectionController _lsc;
+
     public void ExitGame()
     {
         Application.Quit();

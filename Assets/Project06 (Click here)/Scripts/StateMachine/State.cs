@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    [SerializeField] protected Animator _stateAnimator;
+    [SerializeField] protected Animator Animator;
 }

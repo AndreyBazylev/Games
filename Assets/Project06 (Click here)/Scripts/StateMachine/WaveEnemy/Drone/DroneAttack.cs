@@ -11,8 +11,8 @@ public class DroneAttack : WaveEnemyAttackState
     private void OnEnable()
     {
         _laser.SetActive(true);
-        _stateAnimator.SetBool(IsNextToPlayer, true);
-        _stateAnimator.SetBool(IsFoundPlayer, false);
+        Animator.SetBool(IsNextToPlayer, true);
+        Animator.SetBool(IsFoundPlayer, false);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,8 +27,8 @@ public class DroneAttack : WaveEnemyAttackState
     {
         GetComponent<AudioSource>().volume = 0;
         _laser.SetActive(false);
-        _stateAnimator.SetBool(IsNextToPlayer, false);
-        _stateAnimator.SetBool(IsFoundPlayer, true);
+        Animator.SetBool(IsNextToPlayer, false);
+        Animator.SetBool(IsFoundPlayer, true);
     }
 
     public override void StartAttack(Collider2D collision, float damage)

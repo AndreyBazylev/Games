@@ -97,7 +97,7 @@
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyGoingState.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyIdleState.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\StateMachine\WaveEnemy\WaveEnemyStateMachine.cs" />
-    <Compile Include="Assets\Project06 (Click here)\Scripts\Store\StoreController.cs" />
+    <Compile Include="Assets\Project06 (Click here)\Scripts\Store\Store.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Store\StoreItem.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\EnemyInWave.cs" />
     <Compile Include="Assets\Project06 (Click here)\Scripts\Waves\Wave.cs" />

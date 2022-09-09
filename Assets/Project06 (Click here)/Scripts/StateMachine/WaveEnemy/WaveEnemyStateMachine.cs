@@ -11,25 +11,26 @@ using UnityEngine.Events;
 
 public class WaveEnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] protected WaveEnemyDieState _die;
-    [SerializeField] protected WaveEnemyIdleState _idle;
-    [SerializeField] protected WaveEnemyGoingState _going;
-    [SerializeField] protected WaveEnemyAttackState _attack;
+    [SerializeField] protected WaveEnemyDieState Die;
+    [SerializeField] protected WaveEnemyIdleState Idle;
+    [SerializeField] protected WaveEnemyGoingState Going;
+    [SerializeField] protected WaveEnemyAttackState Attack;
 
-    [SerializeField] protected WaveEnemy _enemy;
+    [SerializeField] protected WaveEnemy Enemy;
 
-    [SerializeField] protected Wallet _playerWallet;
-    [SerializeField] protected UnityEvent _enemyWentTrigger;
+    [SerializeField] protected Wallet PlayerWallet;
+    [SerializeField] protected UnityEvent EnemyWentTrigger;
 
     private EnemyHealth _health;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Health>())
         {
-            _enemyWentTrigger?.Invoke();
-            _attack.enabled = true;
-            _going.enabled = false;
-            _attack.StartAttack(collision, _enemy.Damage);
+            EnemyWentTrigger?.Invoke();
+            Attack.enabled = true;
+            Going.enabled = false;
+            Attack.StartAttack(collision, Enemy.Damage);
         }
     }
 
@@ -37,8 +38,8 @@ public class WaveEnemyStateMachine : MonoBehaviour
     {
         if (collision.GetComponent<Health>())
         {
-            _enemyWentTrigger?.Invoke();
-            _attack.enabled = false;
+            EnemyWentTrigger?.Invoke();
+            Attack.enabled = false;
         }
     }
 
@@ -46,17 +47,17 @@ public class WaveEnemyStateMachine : MonoBehaviour
     {
         if (_health.Health < 1)
         {
-            _die.SetWallet(_playerWallet);
+            Die.SetWallet(PlayerWallet);
 
-            _attack.enabled = false;
-            _going.enabled = false;
-            _idle.enabled = false;
-            _die.enabled = true;
+            Attack.enabled = false;
+            Going.enabled = false;
+            Idle.enabled = false;
+            Die.enabled = true;
         }
     }
 
     public void SetWallet(Wallet wallet)
     {
-        _playerWallet = wallet;
+        PlayerWallet = wallet;
     }
 }

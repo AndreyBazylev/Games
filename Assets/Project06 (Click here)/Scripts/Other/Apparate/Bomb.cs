@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] protected AudioClip _tock;
+    [SerializeField] protected AudioClip Tock;
 
     [SerializeField] private int _damage;
 
@@ -24,10 +24,10 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<WaveEnemy>())
+        if (collision.TryGetComponent(out WaveEnemy enemy))
         {
-            collision.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-            collision.GetComponent<EnemyHealth>().TakeDamage(_damage, _tock);
+            enemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(_damage, Tock);
             _bombRigidbody.gravityScale = 0;
             _bombRigidbody.velocity = new Vector2(0, 0);
             Instantiate(_psr, transform.position, transform.rotation);

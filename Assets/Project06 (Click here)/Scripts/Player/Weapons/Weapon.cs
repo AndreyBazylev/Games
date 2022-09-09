@@ -6,41 +6,42 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] protected float _offset;
-    [SerializeField] protected float _weaponSpeed;
-    [SerializeField] protected Bullet _bullet;
-    [SerializeField] protected Transform _shotDirection;
-    [SerializeField] protected Wallet _playerWallet;
-    [SerializeField] protected AudioClip _fireSound;
+    [SerializeField] protected float Offset;
+    [SerializeField] protected float WeaponSpeed;
+    [SerializeField] protected Bullet Bullet;
+    [SerializeField] protected Transform ShotDirection;
+    [SerializeField] protected Wallet PlayerWallet;
+    [SerializeField] protected AudioClip FireSound;
 
-    protected float _waitTime = 0;
+    protected float WaitTime = 0;
 
     private Vector3 _difference;
     private float _rotateZ;
+
     private void Update()
     {
         _difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _rotateZ = Mathf.Atan2(_difference.y, _difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, _rotateZ + _offset);
-        _waitTime++;
+        transform.rotation = Quaternion.Euler(0f, 0f, _rotateZ + Offset);
+        WaitTime++;
 
         Shoot();
     }
     public void SetWallet(Wallet wallet)
     {
-        _playerWallet = wallet;
+        PlayerWallet = wallet;
     }
 
     public virtual void Shoot()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (_waitTime * Time.deltaTime > _weaponSpeed)
+            if (WaitTime * Time.deltaTime > WeaponSpeed)
             {
-                GetComponent<AudioSource>().PlayOneShot(_fireSound);
-                Bullet newBullet = Instantiate(_bullet, _shotDirection.position, _shotDirection.transform.rotation);
-                newBullet.SetWallet(_playerWallet);
-                _waitTime = 0;
+                GetComponent<AudioSource>().PlayOneShot(FireSound);
+                Bullet newBullet = Instantiate(Bullet, ShotDirection.position, ShotDirection.transform.rotation);
+                newBullet.SetWallet(PlayerWallet);
+                WaitTime = 0;
             }
         }
     }

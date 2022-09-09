@@ -11,14 +11,14 @@ public class WaveEnemyGoingState : State
     private Coroutine _goToCoruontine;
     private void OnEnable()
     {
-        _stateAnimator.SetBool(IsFoundPlayer, true);
+        Animator.SetBool(IsFoundPlayer, true);
         _goToCoruontine = StartCoroutine(GoToTarget());
     }
 
     private void OnDisable()
     {
         transform.Translate(0, 0, 0);
-        _stateAnimator.SetBool(IsFoundPlayer, false);
+        Animator.SetBool(IsFoundPlayer, false);
         StopCoroutine(_goToCoruontine);
     }
 

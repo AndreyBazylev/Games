@@ -7,6 +7,6 @@ public class WaveEnemyIdleState : State
     private const string IsFoundPlayer = "IsFoundPlayer";
     private void OnEnable()
     {
-        _stateAnimator.SetBool(IsFoundPlayer, false);
+        Animator.SetBool(IsFoundPlayer, false);
     }
 }

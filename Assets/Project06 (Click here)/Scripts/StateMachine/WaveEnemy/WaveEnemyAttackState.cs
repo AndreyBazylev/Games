@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WaveEnemyAttackState : State
 {
-    [SerializeField] protected AudioClip _attackSound;
+    [SerializeField] protected AudioClip AttackSound;
 
     protected const string IsNextToPlayer = "IsNextToPlayer";
     
     protected WaitForSeconds _waitTime;
     private void OnDisable()
     {
-        _stateAnimator.SetBool(IsNextToPlayer, false);
+        Animator.SetBool(IsNextToPlayer, false);
     }
 
     public virtual void StartAttack(Collider2D collision, float damage)
@@ -23,7 +23,7 @@ public class WaveEnemyAttackState : State
     {
         while (collision.GetComponent<Health>().GetHealth() > 0)
         {
-            GetComponent<AudioSource>().PlayOneShot(_attackSound);
+            GetComponent<AudioSource>().PlayOneShot(AttackSound);
             Attack(collision, damage);
             yield return _waitTime;
         }
@@ -33,7 +33,7 @@ public class WaveEnemyAttackState : State
 
     protected virtual void Attack(Collider2D collision, float damage)
     {
-        _stateAnimator.SetBool(IsNextToPlayer, true);
+        Animator.SetBool(IsNextToPlayer, true);
         collision.GetComponent<Health>().TakeDamage(damage);
     }
 }

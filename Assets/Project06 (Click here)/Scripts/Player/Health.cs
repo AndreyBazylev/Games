@@ -8,11 +8,13 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField] public event UnityAction<float, float> Changed;
+
     [SerializeField] private float _maxHealth = 100;
 
     private bool _isTakenDamage = false;
 
     private float _health;
+
     private void Start()
     {
         _health = _maxHealth;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelSelectionController : MonoBehaviour
 {
-
     [SerializeField] private int _currentLevel;
 
     private static int _maxLevels = 4;
+
     public void LoadNextLevel()
     {
         if (_currentLevel + 1 < _maxLevels)

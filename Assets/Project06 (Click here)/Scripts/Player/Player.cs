@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
 
     private int _currrentWeapon = 0;
+
     public void AddNewWeapon(Weapon weapon)
     {
         _weapons.Add(weapon);

@@ -8,12 +8,12 @@ public class AutoWeapon : Weapon
     {
         if (Input.GetMouseButton(0))
         {
-            if (_waitTime * Time.deltaTime > _weaponSpeed)
+            if (WaitTime * Time.deltaTime > WeaponSpeed)
             {
-                GetComponent<AudioSource>().PlayOneShot(_fireSound);
-                Bullet newBullet = Instantiate(_bullet, _shotDirection.position, _shotDirection.transform.rotation);
-                newBullet.SetWallet(_playerWallet);
-                _waitTime = 0;
+                GetComponent<AudioSource>().PlayOneShot(FireSound);
+                Bullet newBullet = Instantiate(Bullet, ShotDirection.position, ShotDirection.transform.rotation);
+                newBullet.SetWallet(PlayerWallet);
+                WaitTime = 0;
             }
         }
     }

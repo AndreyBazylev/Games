@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FlamePowerBullet : Bullet
 {
-    protected override void GiveDamage(WaveEnemy waveEnemy)
+    protected override void GiveDamage(EnemyHealth enemyHealth)
     {
-        waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.gameObject.GetComponent<EnemyHealth>().TakeDamage(_bulletDamage, _tock);
+        enemyHealth.GetComponent<WaveEnemyStateMachine>().SetWallet(PlayerWallet);
+        enemyHealth.TakeDamage(BulletDamage, Tock);
     }
 }

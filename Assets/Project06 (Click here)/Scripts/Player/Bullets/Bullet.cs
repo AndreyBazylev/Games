@@ -6,33 +6,33 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] protected float _bulletSpeed;
-    [SerializeField] protected float _bulletDamage;
-    [SerializeField] protected Wallet _playerWallet;
-    [SerializeField] protected AudioClip _tock;
+    [SerializeField] protected float BulletSpeed;
+    [SerializeField] protected float BulletDamage;
+    [SerializeField] protected Wallet PlayerWallet;
+    [SerializeField] protected AudioClip Tock;
 
     private void Update()
     {
-        transform.Translate(Vector2.up * _bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector2.up * BulletSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<WaveEnemy>())
+        if (collision.TryGetComponent(out EnemyHealth _enemyHealth))
         {
-            GiveDamage(collision.GetComponent<WaveEnemy>());
+            GiveDamage(_enemyHealth);
         }
     }
 
     public void SetWallet(Wallet wallet)
     {
-        _playerWallet = wallet;
+        PlayerWallet = wallet;
     }
 
-    protected virtual void GiveDamage(WaveEnemy waveEnemy)
+    protected virtual void GiveDamage(EnemyHealth enemyHealth)
     {
-        waveEnemy.GetComponent<WaveEnemyStateMachine>().SetWallet(_playerWallet);
-        waveEnemy.gameObject.GetComponent<EnemyHealth>().TakeDamage(_bulletDamage, _tock);
+        enemyHealth.GetComponent<WaveEnemyStateMachine>().SetWallet(PlayerWallet);
+        enemyHealth.TakeDamage(BulletDamage, Tock);
         Destroy(gameObject);
     }
 }

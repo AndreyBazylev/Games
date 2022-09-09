@@ -9,9 +9,10 @@ public class WaveEnemyDieState : State
 
     private const string IsDead = "IsDead";
     private const string Delete = "Delete";
+
     private void OnEnable()
     {
-        _stateAnimator.SetBool(IsDead, true);
+        Animator.SetBool(IsDead, true);
         _deathSound = GetComponent<EnemyHealth>().DeathSound;
         GetComponent<AudioSource>().PlayOneShot(_deathSound);
         _playerWallet.IcreaseMoney(gameObject.GetComponent<WaveEnemy>().PriceForDead);
@@ -19,7 +20,7 @@ public class WaveEnemyDieState : State
 
     private void Update()
     {
-        var animatorStateInfo = _stateAnimator.GetCurrentAnimatorStateInfo(0);
+        var animatorStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
 
         if (animatorStateInfo.IsName(Delete))
         {
