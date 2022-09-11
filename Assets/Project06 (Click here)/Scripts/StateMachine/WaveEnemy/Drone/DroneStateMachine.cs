@@ -12,11 +12,11 @@ public class DroneStateMachine : WaveEnemyStateMachine
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Health>())
+        if (collision.TryGetComponent(out Health health))
         {
             EnemyWentTrigger?.Invoke();
             Attack.enabled = true;
-            Attack.StartAttack(collision, Enemy.Damage);
+            Attack.StartAttack(health, Enemy.Damage);
         }
     }
 }

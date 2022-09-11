@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class DroneAttack : WaveEnemyAttackState
 {
     [SerializeField] private GameObject _laser;
     [SerializeField] private WaveEnemy _waveEnemy;
 
     private const string IsFoundPlayer = "IsFoundPlayer";
+
+    private AudioSource _audioSource;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
         _laser.SetActive(true);
@@ -17,27 +27,27 @@ public class DroneAttack : WaveEnemyAttackState
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Health>())
+        if (collision.TryGetComponent(out Health health))
         {
-            StartAttack(collision, _waveEnemy.Damage);
+            StartAttack(health, _waveEnemy.Damage);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        GetComponent<AudioSource>().volume = 0;
+        _audioSource.volume = 0;
         _laser.SetActive(false);
         Animator.SetBool(IsNextToPlayer, false);
         Animator.SetBool(IsFoundPlayer, true);
     }
 
-    public override void StartAttack(Collider2D collision, float damage)
+    public override void StartAttack(Health health, float damage)
     {
-        GetComponent<AudioSource>().volume = 1;
+        _audioSource.volume = 1;
 
-        if (collision.GetComponent<Health>().GetHealth() > 0)
+        if (health.GetLiveState())
         {
-            collision.GetComponent<Health>().TakeDamage(damage);
+            health.TakeDamage(damage);
         }
     }
 }

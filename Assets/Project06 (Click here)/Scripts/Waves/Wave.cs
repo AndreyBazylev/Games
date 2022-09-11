@@ -7,6 +7,7 @@ public class Wave : MonoBehaviour
     [SerializeField] private List<EnemyInWave> _enemys;
 
     private int _enemysCount;
+
     private void Start()
     {
         foreach (var item in _enemys)

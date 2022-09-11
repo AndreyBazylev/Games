@@ -14,6 +14,7 @@ public class WavesController : MonoBehaviour
     [SerializeField] private LevelEndController _lec;
      
     private int _currentWave = 0;
+
     public void ShowNextWavePanel()
     {
         _nextWavePanel.SetActive(true);

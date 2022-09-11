@@ -12,13 +12,14 @@ public class WaveSpawner : MonoBehaviour
     private WaitForSeconds _wait = new WaitForSeconds(1f);
 
     private List<WaveEnemy> _currentEnemys = new List<WaveEnemy>();
+
     private void Update()
     {
         if (_currentEnemys.Count != 0)
         {
             for (int index = 0; index < _currentEnemys.Count; index++)
             {
-                if (_currentEnemys[index].gameObject.GetComponent<EnemyHealth>().Health <= 0)
+                if (_currentEnemys[index].gameObject.GetComponent<EnemyHealth>().Value <= 0)
                 {
                     _currentEnemys.RemoveAt(index);
                 }   
@@ -30,11 +31,13 @@ public class WaveSpawner : MonoBehaviour
             _waveIsDead?.Invoke();
         }
     }
+
     public void StartWave(Wave wave)
     {
         _enemySpawned = 0;
         StartCoroutine(SpawnEnemy(wave));
     }
+
     private IEnumerator SpawnEnemy(Wave wave)
     {
         Debug.Log("uwu");
@@ -45,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
 
             if (newWaveEnemy != null)
             {
-                WaveEnemy newEnemy = Instantiate(newWaveEnemy, transform.position + newWaveEnemy.Offset, transform.rotation);
+                WaveEnemy newEnemy = Instantiate(newWaveEnemy, transform.position + newWaveEnemy.Offset , transform.rotation);
                 _currentEnemys.Add(newEnemy);
             }
 

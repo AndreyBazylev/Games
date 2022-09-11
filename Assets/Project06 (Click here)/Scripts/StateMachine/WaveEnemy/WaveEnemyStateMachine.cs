@@ -25,12 +25,12 @@ public class WaveEnemyStateMachine : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Health>())
+        if (collision.TryGetComponent(out Health health))
         {
             EnemyWentTrigger?.Invoke();
             Attack.enabled = true;
             Going.enabled = false;
-            Attack.StartAttack(collision, Enemy.Damage);
+            Attack.StartAttack(health, Enemy.Damage);
         }
     }
 
@@ -45,7 +45,7 @@ public class WaveEnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        if (_health.Health < 1)
+        if (_health.Value < 1)
         {
             Die.SetWallet(PlayerWallet);
 

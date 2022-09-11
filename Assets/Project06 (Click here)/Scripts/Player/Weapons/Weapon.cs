@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected AudioClip FireSound;
 
     protected float WaitTime = 0;
+    protected AudioSource _audioSource;
 
     private Vector3 _difference;
     private float _rotateZ;
@@ -38,7 +39,7 @@ public class Weapon : MonoBehaviour
         {
             if (WaitTime * Time.deltaTime > WeaponSpeed)
             {
-                GetComponent<AudioSource>().PlayOneShot(FireSound);
+                _audioSource.PlayOneShot(FireSound);
                 Bullet newBullet = Instantiate(Bullet, ShotDirection.position, ShotDirection.transform.rotation);
                 newBullet.SetWallet(PlayerWallet);
                 WaitTime = 0;

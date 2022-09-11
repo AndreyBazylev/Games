@@ -13,33 +13,33 @@ public class Health : MonoBehaviour
 
     private bool _isTakenDamage = false;
 
-    private float _health;
+    public float Value { get; private set; }
 
     private void Start()
     {
-        _health = _maxHealth;
-        Changed?.Invoke(_health, _maxHealth);
+        Value = _maxHealth;
+        Changed?.Invoke(Value, _maxHealth);
     }
 
-    public float GetHealth()
+    public bool GetLiveState()
     {
-        return _health;
+        return Value < 1;
     }
 
     public void Hil(float hilSize)
     {       
-        _health = Mathf.Clamp(_health + hilSize, 0, _maxHealth);
-        Changed?.Invoke(_health, _maxHealth);   
+        Value = Mathf.Clamp(Value + hilSize, 0, _maxHealth);
+        Changed?.Invoke(Value, _maxHealth);   
     }
 
     public void TakeDamage(float damageSize)
     {  
-        _health = Mathf.Clamp(_health - damageSize, 0, _maxHealth);
-        Changed?.Invoke(_health, _maxHealth);
+        Value = Mathf.Clamp(Value - damageSize, 0, _maxHealth);
+        Changed?.Invoke(Value, _maxHealth);
 
         _isTakenDamage = true;
 
-        if (_health <= 0)
+        if (Value <= 0)
         {
             Die();
         }

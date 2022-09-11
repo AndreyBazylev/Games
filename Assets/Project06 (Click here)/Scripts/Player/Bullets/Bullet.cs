@@ -18,9 +18,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out EnemyHealth _enemyHealth))
+        if (collision.TryGetComponent(out WaveEnemy enemy))
         {
-            GiveDamage(_enemyHealth);
+            GiveDamage(enemy);
         }
     }
 
@@ -29,10 +29,10 @@ public class Bullet : MonoBehaviour
         PlayerWallet = wallet;
     }
 
-    protected virtual void GiveDamage(EnemyHealth enemyHealth)
+    protected virtual void GiveDamage(WaveEnemy enemy)
     {
-        enemyHealth.GetComponent<WaveEnemyStateMachine>().SetWallet(PlayerWallet);
-        enemyHealth.TakeDamage(BulletDamage, Tock);
+        enemy.StateMachine.SetWallet(PlayerWallet);
+        enemy.Health.TakeDamage(BulletDamage, Tock);
         Destroy(gameObject);
     }
 }

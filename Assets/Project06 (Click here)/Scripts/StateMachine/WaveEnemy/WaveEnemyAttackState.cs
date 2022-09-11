@@ -9,31 +9,32 @@ public class WaveEnemyAttackState : State
     protected const string IsNextToPlayer = "IsNextToPlayer";
     
     protected WaitForSeconds _waitTime;
+
     private void OnDisable()
     {
         Animator.SetBool(IsNextToPlayer, false);
     }
 
-    public virtual void StartAttack(Collider2D collision, float damage)
+    public virtual void StartAttack(Health health, float damage)
     {
-        StartCoroutine(Attacking(collision, damage));
+        StartCoroutine(Attacking(health, damage));
     }
 
-    protected IEnumerator Attacking(Collider2D collision, float damage)
+    protected IEnumerator Attacking(Health health, float damage)
     {
-        while (collision.GetComponent<Health>().GetHealth() > 0)
+        while (health.GetComponent<Health>().GetLiveState())
         {
             GetComponent<AudioSource>().PlayOneShot(AttackSound);
-            Attack(collision, damage);
+            Attack(health, damage);
             yield return _waitTime;
         }
 
-        StartCoroutine(Attacking(collision, damage));
+        StartCoroutine(Attacking(health, damage));
     }
 
-    protected virtual void Attack(Collider2D collision, float damage)
+    protected virtual void Attack(Health health, float damage)
     {
         Animator.SetBool(IsNextToPlayer, true);
-        collision.GetComponent<Health>().TakeDamage(damage);
+        health.TakeDamage(damage);
     }
 }

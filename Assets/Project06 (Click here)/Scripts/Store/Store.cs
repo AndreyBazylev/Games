@@ -7,6 +7,7 @@ public class Store : MonoBehaviour
     [SerializeField] private GameObject _store;
 
     private bool _storeActive;
+
     public void SetStoreActive()
     {
         _store.SetActive(!_storeActive);

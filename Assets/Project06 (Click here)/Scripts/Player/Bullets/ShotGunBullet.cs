@@ -14,7 +14,7 @@ public class ShotGunBullet : Bullet
         }
     }
 
-    protected override void GiveDamage(EnemyHealth enemyHealth)
+    protected override void GiveDamage(WaveEnemy enemy)
     {
         
     }

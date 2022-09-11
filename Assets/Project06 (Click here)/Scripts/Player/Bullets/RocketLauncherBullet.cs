@@ -22,11 +22,11 @@ public class RocketLauncherBullet : Bullet
         _bulletRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    protected override void GiveDamage(EnemyHealth enemyHealth)
+    protected override void GiveDamage(WaveEnemy enemy)
     {
-        enemyHealth.GetComponent<WaveEnemyStateMachine>().SetWallet(PlayerWallet);
-        enemyHealth.TakeDamage(BulletDamage, Tock);
-        gameObject.GetComponent<Animator>().SetBool(Boom, true);
+        enemy.StateMachine.SetWallet(PlayerWallet);
+        enemy.Health.TakeDamage(BulletDamage, Tock);
+        _bulletAnimator.SetBool(Boom, true);
         _bulletRigidbody.velocity = new Vector2(0, 0);
         _bulletRigidbody.gravityScale = 0;
     }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+
 public class Apparate : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,6 +13,12 @@ public class Apparate : MonoBehaviour
 
     private bool _isFoundEnemy;
     private Bomb _attackBomb;
+    private Collider2D _collider;
+
+    private void Start()
+    {
+        _collider = GetComponent<Collider2D>();
+    }
 
     private void Update()
     {
@@ -43,7 +51,7 @@ public class Apparate : MonoBehaviour
         newBomb.SetWallet(_playerWallet);
         newBomb.SetParticles(_psr);
         StartReturnToStartPosition();
-        GetComponent<Collider2D>().enabled = false;
+        _collider.enabled = false;
     }
 
     private void StartReturnToStartPosition()

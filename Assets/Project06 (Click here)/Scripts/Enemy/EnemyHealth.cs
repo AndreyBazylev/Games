@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(WaveEnemyStateMachine))]
+
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] public float Health { get; private set; }
+    [SerializeField] public float Value { get; private set; }
+
+    [SerializeField] public WaveEnemyStateMachine StateMachine { get; private set; }
 
     [SerializeField] private AudioClip _simpleDeathSound;
 
@@ -19,9 +24,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage, AudioClip tock)
     {
-        Health -= damage;
+        Value -= damage;
 
-        if (Health > 0)
+        if (Value > 0)
         {
             _audioSource.PlayOneShot(tock);
         }
@@ -38,5 +43,4 @@ public class EnemyHealth : MonoBehaviour
         DeathSound = deathSound;
     }
 
-    
 }
